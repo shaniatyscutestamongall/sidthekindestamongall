@@ -1,0 +1,1682 @@
+<!DOCTYPE html>
+<!-- saved from url=(0046)file:///D:/sidsollercodes/thebirthdaygift.html -->
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Happy Birthday, My Love 🎀</title>
+
+<style>
+
+/* ================================
+   BARBIE PINK BIRTHDAY WEBSITE
+================================ */
+
+@import url('https://fonts.googleapis.com/css2?family=Pacifico&family=Poppins:wght@300;400;500;600;700&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background: #ffd6e7;
+    color: #a0718c;
+    overflow-x: hidden;
+}
+
+
+/* ================================
+   WELCOME ROSE SCREEN
+   ADDED
+================================ */
+
+#welcomeScreen {
+    position: fixed;
+    inset: 0;
+    z-index: 99999;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    text-align: center;
+
+    background: linear-gradient(
+        135deg,
+        #ff69b4,
+        #9b1c5f,
+        #ff8bc8
+    );
+
+    transition: opacity 1s ease, visibility 1s ease;
+}
+
+#welcomeScreen.hide {
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+}
+
+.welcome-content {
+    color: white;
+    padding: 20px;
+}
+
+.welcome-content h1 {
+    font-family: 'Pacifico', cursive;
+    font-size: clamp(2.8rem, 8vw, 5rem);
+    text-shadow: 4px 5px 0 rgba(160, 0, 80, .2);
+    margin-top: 10px;
+}
+
+.welcome-content p {
+    margin: 15px auto 25px;
+    max-width: 500px;
+}
+
+.welcome-bow {
+    font-size: 4rem;
+    animation: welcomeBounce 2s infinite;
+}
+
+@keyframes welcomeBounce {
+    50% {
+        transform: translateY(-10px) rotate(5deg);
+    }
+}
+
+
+/* ================================
+   ROSE BOUQUET
+   ADDED
+================================ */
+
+.bouquet {
+    position: relative;
+    width: 280px;
+    height: 260px;
+    margin: 0 auto;
+}
+
+/* Stems */
+
+.stem {
+    position: absolute;
+    width: 5px;
+    height: 145px;
+    background: #be0db6;
+    bottom: 30px;
+    left: 50%;
+    transform-origin: bottom;
+    border-radius: 10px;
+}
+
+.stem:nth-child(1) {
+    transform: rotate(-28deg);
+}
+
+.stem:nth-child(2) {
+    transform: rotate(-14deg);
+}
+
+.stem:nth-child(3) {
+    transform: rotate(0deg);
+}
+
+.stem:nth-child(4) {
+    transform: rotate(14deg);
+}
+
+.stem:nth-child(5) {
+    transform: rotate(28deg);
+}
+
+
+/* Leaves */
+
+.leaf {
+    position: absolute;
+    width: 32px;
+    height: 17px;
+    background: #4b9653;
+    border-radius: 100% 0;
+}
+
+.leaf.one {
+    bottom: 80px;
+    left: 60px;
+    transform: rotate(25deg);
+}
+
+.leaf.two {
+    bottom: 95px;
+    right: 60px;
+    transform: rotate(150deg);
+}
+
+.leaf.three {
+    bottom: 60px;
+    left: 105px;
+    transform: rotate(15deg);
+}
+
+
+/* Roses */
+
+.rose {
+    position: absolute;
+
+    width: 62px;
+    height: 62px;
+
+    border-radius: 50%;
+
+    background:
+        radial-gradient(
+            circle at center,
+            #7d0035 0 8%,
+            #ff315f 10% 22%,
+            #c90045 24% 38%,
+            #ff456c 40% 55%,
+            #b90040 57% 72%,
+            #ff6382 74%
+        );
+
+    box-shadow:
+        0 5px 12px rgba(120, 0, 50, .25);
+
+    animation: roseSway 3s ease-in-out infinite;
+}
+
+.rose.white {
+    background:
+        radial-gradient(
+            circle at center,
+            #d4446f 0 8%,
+            #ffffff 10% 25%,
+            #d10d52 27% 42%,
+            #ffffff 44% 60%,
+            #e92566 62% 75%,
+            #ffffff 77%
+        );
+}
+
+.r1 {
+    top: 20px;
+    left: 25px;
+}
+
+.r2 {
+    top: 5px;
+    left: 95px;
+}
+
+.r3 {
+    top: 20px;
+    right: 25px;
+}
+
+.r4 {
+    top: 65px;
+    left: 60px;
+}
+
+.r5 {
+    top: 65px;
+    left: 125px;
+}
+
+.r6 {
+    top: 60px;
+    right: 55px;
+}
+
+.r7 {
+    top: 100px;
+    left: 100px;
+}
+
+@keyframes roseSway {
+
+    0%, 100% {
+        transform: rotate(-2deg);
+    }
+
+    50% {
+        transform: rotate(3deg);
+    }
+}
+
+
+/* Wrapping paper */
+
+.wrapper-paper {
+    position: absolute;
+
+    bottom: 0;
+    left: 50%;
+
+    transform: translateX(-50%);
+
+    width: 170px;
+    height: 100px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #310333 0 20%,
+            #ffd1e2 20% 40%,
+            #190422 40% 60%,
+            #ffd1e2 60% 80%,
+            #fff 80%
+        );
+
+    clip-path: polygon(
+        15% 0,
+        85% 0,
+        100% 100%,
+        0 100%
+    );
+}
+
+.wrapper-ribbon {
+    position: absolute;
+
+    bottom: 0;
+    left: 50%;
+
+    transform: translateX(-50%);
+
+    width: 25px;
+    height: 105px;
+
+    background: #ff4d91;
+}
+
+
+/* Welcome button */
+
+.enter-button {
+    border: none;
+
+    padding: 15px 32px;
+
+    border-radius: 50px;
+
+    background: rgb(243, 145, 186);
+    color: #ff1493;
+
+    font-family: 'Poppins', sans-serif;
+    font-weight: 700;
+    font-size: 1rem;
+
+    cursor: pointer;
+
+    box-shadow:
+        0 10px 25px rgba(128, 0, 64, .2);
+
+    transition: .3s;
+}
+
+.enter-button:hover {
+    transform: translateY(-5px) scale(1.04);
+}
+
+
+/* ================================
+   FLOATING HEARTS
+================================ */
+
+.hearts {
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: 10;
+    overflow: hidden;
+}
+
+.heart {
+    position: absolute;
+    bottom: -50px;
+    animation: floatUp linear infinite;
+    opacity: .8;
+}
+
+@keyframes floatUp {
+    0% {
+        transform: translateY(0) rotate(0deg);
+        opacity: 0;
+    }
+
+    15% {
+        opacity: .8;
+    }
+
+    100% {
+        transform: translateY(-110vh) rotate(360deg);
+        opacity: 0;
+    }
+}
+
+/* ================================
+   HERO
+================================ */
+
+.hero {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 40px 20px;
+    position: relative;
+
+    background:
+        radial-gradient(circle at 20% 20%, #fff 0 5px, transparent 6px),
+        radial-gradient(circle at 80% 30%, #fff 0 4px, transparent 5px),
+        linear-gradient(135deg, #ff69b4, #ff1493, #ff8bc8);
+    background-size: 150px 150px, 180px 180px, cover;
+}
+
+.hero-content {
+    max-width: 850px;
+    color: white;
+}
+
+.small-title {
+    font-size: 1rem;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    margin-bottom: 15px;
+}
+
+.hero h1 {
+    font-family: 'Pacifico', cursive;
+    font-size: clamp(3rem, 8vw, 7rem);
+    line-height: 1.1;
+    text-shadow: 4px 5px 0 rgba(160, 0, 80, .2);
+}
+
+.hero p {
+    font-size: 1.15rem;
+    margin: 20px auto;
+    max-width: 600px;
+}
+
+.bow {
+    font-size: 4rem;
+    animation: bounce 2s infinite;
+}
+
+@keyframes bounce {
+    50% {
+        transform: translateY(-12px) rotate(5deg);
+    }
+}
+
+.button {
+    display: inline-block;
+    margin-top: 20px;
+    padding: 15px 32px;
+    border-radius: 50px;
+    background: white;
+    color: #ff1493;
+    font-weight: 700;
+    text-decoration: none;
+    box-shadow: 0 10px 25px rgba(128, 0, 64, .2);
+    transition: .3s;
+}
+
+.button:hover {
+    transform: translateY(-5px) scale(1.04);
+}
+
+/* ================================
+   SECTION
+================================ */
+
+section {
+    padding: 90px 20px;
+}
+
+.section-title {
+    text-align: center;
+    font-family: 'Pacifico', cursive;
+    font-size: clamp(2.5rem, 6vw, 4rem);
+    color: #e60073;
+    margin-bottom: 45px;
+}
+
+.container {
+    max-width: 1100px;
+    margin: auto;
+}
+
+/* ================================
+   CAKE SECTION
+================================ */
+
+.cake-section {
+    background: #e79cbf;
+    text-align: center;
+    position: relative;
+}
+
+.cake-wrapper {
+    margin: 40px auto;
+    width: min(90vw, 500px);
+    position: relative;
+}
+
+/* Plate */
+
+.plate {
+    width: 90%;
+    height: 30px;
+    background: #ff69b4;
+    border-radius: 50%;
+    margin: auto;
+    box-shadow: 0 10px 0 #d92d83;
+}
+
+/* Cake */
+
+.cake {
+    position: relative;
+    width: 80%;
+    height: 180px;
+    margin: auto;
+}
+
+/* Bottom cake layer */
+
+.cake-bottom {
+    position: absolute;
+    bottom: 15px;
+    left: 5%;
+    width: 90%;
+    height: 90px;
+    background: #ff4fa3;
+    border-radius: 10px 10px 25px 25px;
+    box-shadow: inset 0 -10px 0 #e52b89;
+}
+
+/* Top cake */
+
+.cake-top {
+    position: absolute;
+    bottom: 95px;
+    left: 10%;
+    width: 80%;
+    height: 65px;
+    background: #ff8bc8;
+    border-radius: 20px 20px 10px 10px;
+}
+
+/* Frosting */
+
+.frosting {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 28px;
+    background: #fff;
+    border-radius: 20px;
+}
+
+.frosting::before,
+.frosting::after {
+    content: "";
+    position: absolute;
+    background: white;
+    width: 25px;
+    height: 30px;
+    border-radius: 50%;
+    bottom: -12px;
+}
+
+.frosting::before {
+    left: 25%;
+}
+
+.frosting::after {
+    right: 25%;
+}
+
+/* Sprinkles */
+
+.sprinkle {
+    position: absolute;
+    width: 12px;
+    height: 4px;
+    border-radius: 5px;
+    background: #fff;
+}
+
+.s1 { left: 20%; top: 50%; transform: rotate(20deg); }
+.s2 { left: 40%; top: 70%; transform: rotate(-20deg); }
+.s3 { left: 60%; top: 50%; transform: rotate(30deg); }
+.s4 { left: 75%; top: 70%; transform: rotate(-30deg); }
+
+/* Candles */
+
+.candles {
+    position: absolute;
+    bottom: 150px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 30px;
+}
+
+.candle {
+    width: 16px;
+    height: 65px;
+    background: repeating-linear-gradient(
+        45deg,
+        #fff,
+        #fff 7px,
+        #ff1493 7px,
+        #ff1493 14px
+    );
+    border-radius: 5px;
+    position: relative;
+}
+
+/* Flame */
+
+.flame {
+    position: absolute;
+    top: -35px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 20px;
+    height: 30px;
+    background: #ffd21f;
+    border-radius: 50% 50% 50% 0;
+    transform-origin: bottom;
+    animation: flicker .5s infinite alternate;
+    rotate: -45deg;
+    box-shadow: 0 0 20px #ff9800;
+}
+
+@keyframes flicker {
+    from {
+        transform: translateX(-50%) rotate(-5deg) scale(1);
+    }
+
+    to {
+        transform: translateX(-50%) rotate(5deg) scale(1.15);
+    }
+}
+
+.cake-message {
+    font-family: 'Pacifico', cursive;
+    color: #d41470;
+    font-size: 1.4rem;
+    margin-top: 25px;
+}
+
+/* ================================
+   LOVE LETTER
+================================ */
+
+.letter-section {
+    background: #ffb6d9;
+}
+
+.letter {
+    max-width: 750px;
+    margin: auto;
+    background: #fffafc;
+    padding: 50px;
+    border-radius: 25px;
+    box-shadow: 0 20px 50px rgba(168, 0, 91, .15);
+    position: relative;
+}
+
+.letter::before {
+    content: "🎀";
+    position: absolute;
+    top: -35px;
+    right: 30px;
+    font-size: 4rem;
+}
+
+.letter h3 {
+    font-family: 'Pacifico', cursive;
+    font-size: 2rem;
+    color: #e60073;
+    margin-bottom: 20px;
+}
+
+.letter p {
+    line-height: 2;
+    margin-bottom: 15px;
+}
+
+/* ================================
+   REASONS
+================================ */
+
+.reasons {
+    background: #fff;
+}
+
+.reason-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 25px;
+}
+
+.reason {
+    background: #ffe0ef;
+    padding: 30px;
+    border-radius: 25px;
+    text-align: center;
+    transition: .3s;
+    border: 3px solid #ffb0d5;
+}
+
+.reason:hover {
+    transform: translateY(-10px) rotate(1deg);
+    box-shadow: 0 15px 30px rgba(255, 20, 147, .15);
+}
+
+.reason span {
+    font-size: 3rem;
+}
+
+.reason h3 {
+    margin: 15px 0 10px;
+    color: #e60073;
+}
+
+/* ================================
+   MEMORIES
+================================ */
+
+.memories {
+    background: #ffd0e5;
+}
+
+.photo-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 30px;
+}
+
+.polaroid {
+    background: white;
+    padding: 12px 12px 25px;
+    box-shadow: 0 12px 25px rgba(120, 0, 70, .15);
+    transform: rotate(-2deg);
+    transition: .3s;
+}
+
+.polaroid:nth-child(even) {
+    transform: rotate(3deg);
+}
+
+.polaroid:hover {
+    transform: rotate(0deg) scale(1.05);
+}
+
+.polaroid img {
+    width: 100%;
+    height: 280px;
+    object-fit: cover;
+}
+
+.polaroid p {
+    text-align: center;
+    font-family: 'Pacifico', cursive;
+    margin-top: 12px;
+    color: #e60073;
+}
+
+/* ================================
+   COUNTDOWN
+================================ */
+
+.countdown-section {
+    background: #ff69b4;
+    color: white;
+    text-align: center;
+}
+
+.countdown-section .section-title {
+    color: white;
+}
+
+.countdown {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.time-box {
+    background: white;
+    color: #e60073;
+    width: 120px;
+    padding: 20px 10px;
+    border-radius: 20px;
+    box-shadow: 0 10px 20px rgba(120, 0, 60, .15);
+}
+
+.time-box strong {
+    display: block;
+    font-size: 2.5rem;
+}
+
+.time-box span {
+    font-size: .8rem;
+    text-transform: uppercase;
+}
+
+/* ================================
+   SURPRISE
+================================ */
+
+.surprise {
+    text-align: center;
+    background: #fff0f7;
+}
+
+.gift {
+    font-size: 7rem;
+    cursor: pointer;
+    display: inline-block;
+    transition: .3s;
+    animation: giftBounce 1.5s infinite;
+}
+
+.gift:hover {
+    transform: scale(1.15);
+}
+
+@keyframes giftBounce {
+    50% {
+        transform: translateY(-10px);
+    }
+}
+
+.hidden-message {
+    display: none;
+    max-width: 700px;
+    margin: 30px auto 0;
+    padding: 35px;
+    background: #ff69b4;
+    color: white;
+    border-radius: 25px;
+    animation: reveal .8s ease;
+}
+
+.hidden-message h2 {
+    font-family: 'Pacifico', cursive;
+    font-size: 2.5rem;
+    margin-bottom: 15px;
+}
+
+@keyframes reveal {
+    from {
+        opacity: 0;
+        transform: scale(.8);
+    }
+
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+/* ================================
+   FOOTER
+================================ */
+
+footer {
+    background: #e60073;
+    color: white;
+    text-align: center;
+    padding: 35px 20px;
+}
+
+footer h2 {
+    font-family: 'Pacifico', cursive;
+    margin-bottom: 10px;
+}
+
+/* ================================
+   RESPONSIVE
+================================ */
+
+@media (max-width: 800px) {
+
+    .reason-grid,
+    .photo-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .letter {
+        padding: 30px 22px;
+    }
+
+    .hero h1 {
+        font-size: 3.5rem;
+    }
+
+    .cake {
+        width: 90%;
+    }
+
+    .candles {
+        gap: 18px;
+    }
+
+    .time-box {
+        width: 90px;
+    }
+
+    .time-box strong {
+        font-size: 2rem;
+    }
+
+    .bouquet {
+        transform: scale(.85);
+    }
+}
+
+</style>
+</head>
+
+<body>
+
+
+<!-- ========================================================
+     WELCOME ROSE BOUQUET
+     ADDED
+========================================================= -->
+
+<div id="welcomeScreen">
+
+    <div class="welcome-content">
+
+        <div class="welcome-bow">
+            🎀
+        </div>
+
+        <div class="bouquet">
+
+            <!-- Stems -->
+
+            <div class="stem"></div>
+            <div class="stem"></div>
+            <div class="stem"></div>
+            <div class="stem"></div>
+            <div class="stem"></div>
+
+            <!-- Leaves -->
+
+            <div class="leaf one"></div>
+            <div class="leaf two"></div>
+            <div class="leaf three"></div>
+
+            <!-- Red Roses -->
+
+            <div class="rose r1"></div>
+            <div class="rose r3"></div>
+            <div class="rose r5"></div>
+
+            <!-- White Roses -->
+
+            <div class="rose white r2"></div>
+            <div class="rose white r4"></div>
+            <div class="rose white r6"></div>
+
+            <div class="rose white r7"></div>
+
+            <!-- Wrapping -->
+
+            <div class="wrapper-paper"></div>
+            <div class="wrapper-ribbon"></div>
+
+        </div>
+
+        <h1>
+            For You, My Chenggay. 💗
+        </h1>
+
+        <p>
+            A little something I made just for you.
+            <br>
+            Happy Birthday, Gorgeous! 🎀
+        </p>
+
+        <button class="enter-button" onclick="enterWebsite()">
+            Open My Gift 💌
+        </button>
+
+    </div>
+
+</div>
+
+
+<!-- FLOATING HEARTS -->
+
+<div class="hearts">
+
+    <div class="heart" style="left:5%; animation-duration:8s;">
+        💗
+    </div>
+
+    <div class="heart" style="left:15%; animation-duration:11s;">
+        🎀
+    </div>
+
+    <div class="heart" style="left:28%; animation-duration:9s;">
+        💕
+    </div>
+
+    <div class="heart" style="left:40%; animation-duration:12s;">
+        ✨
+    </div>
+
+    <div class="heart" style="left:55%; animation-duration:8s;">
+        💖
+    </div>
+
+    <div class="heart" style="left:70%; animation-duration:10s;">
+        🌸
+    </div>
+
+    <div class="heart" style="left:85%; animation-duration:13s;">
+        💗
+    </div>
+
+</div>
+
+
+<!-- ================================
+     HERO
+================================ -->
+
+<section class="hero">
+
+    <div class="hero-content">
+
+        <div class="bow">🎀</div>
+
+        <div class="small-title">
+            for the prettiest girl in the world ♡
+        </div>
+
+        <!-- CHANGE HER NAME HERE -->
+
+        <h1>
+            Happy Birthday,
+            <br>
+            To My Favorite Person 💗
+        </h1>
+
+        <p>
+            A tiny pink corner of the internet made especially
+            for the girl who makes my world a little brighter.
+        </p>
+
+        <a href="file:///D:/sidsollercodes/thebirthdaygift.html#cake" class="button">
+            Open Your Birthday Gift 💌
+        </a>
+
+    </div>
+
+</section>
+
+
+<!-- ================================
+     CAKE
+================================ -->
+
+<section class="cake-section" id="cake">
+
+    <div class="container">
+
+        <h2 class="section-title">
+            A Cake Just For You 🎂
+        </h2>
+
+        <div class="cake-wrapper">
+
+            <div class="candles">
+
+                <div class="candle">
+                    <div class="flame"></div>
+                </div>
+
+                <div class="candle">
+                    <div class="flame"></div>
+                </div>
+
+                <div class="candle">
+                    <div class="flame"></div>
+                </div>
+
+            </div>
+
+            <div class="cake">
+
+                <div class="cake-top">
+                    <div class="frosting"></div>
+
+                    <div class="sprinkle s1"></div>
+                    <div class="sprinkle s2"></div>
+                    <div class="sprinkle s3"></div>
+                    <div class="sprinkle s4"></div>
+                </div>
+
+                <div class="cake-bottom"></div>
+
+            </div>
+
+            <div class="plate"></div>
+
+        </div>
+
+        <p class="cake-message">
+            Make a wish, birthday girl! 🎀✨
+        </p>
+
+    </div>
+
+</section>
+
+
+<!-- ================================
+     LOVE LETTER
+================================ -->
+
+<section class="letter-section">
+
+    <div class="container">
+
+        <h2 class="section-title">
+            A Little Letter For You 💌
+        </h2>
+
+        <div class="letter">
+
+            <h3>
+                To My Favorite Girl,
+            </h3>
+
+            <!-- CHANGE THIS MESSAGE -->
+
+            <p>
+                Happy birthday, Boi. 💗
+            </p>
+
+            <p>
+                I hope today reminds you of just how special
+                you are. You deserve all the happiness, love,
+                laughter, and beautiful things this world can give.
+            </p>
+
+            <p>
+                Thank you for being you. Thank you for the little things,
+                the smiles, the conversations, the memories,
+                and every moment that somehow becomes special
+                simply because you're there. Thank you for existing.
+            </p>
+            <p>
+
+           
+                You are the kindest, bravest, most genuine person I've ever met.
+
+            </p>
+
+            <p>
+                I may not always know the perfect words to say,
+                but I hope you always remember that you are
+                deeply loved and appreciated.
+            </p>
+
+            <p>
+                Tschaine,
+                May this year bring you closer to all the dreams
+                you've been wishing for. 🎀
+            </p>
+
+            <p>
+                With all my love,<br>
+                <strong>Shan ♡</strong>
+            </p>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- ================================
+     REASONS
+================================ -->
+
+<section class="reasons">
+
+    <div class="container">
+
+        <h2 class="section-title">
+            Reasons Why I Love You the most💕
+        </h2>
+
+        <div class="reason-grid">
+
+            <div class="reason">
+
+                <span>🎀</span>
+
+                <h3>
+                    Your Smile
+                </h3>
+
+                <p>
+                    Your smile has a way of making even
+                    ordinary days feel special.
+                </p>
+
+            </div>
+
+
+            <div class="reason">
+
+                <span>💗</span>
+
+                <h3>
+                    Your Heart and Soul
+                </h3>
+
+                <p>
+                    You have such a beautiful heart and kind soul,
+                    and I love the way you care.
+                </p>
+
+            </div>
+
+
+            <div class="reason">
+
+                <span>✨</span>
+
+                <h3>
+                    Your Everything
+                </h3>
+
+                <p>
+                    Honestly, I could make this list
+                    forever and still wouldn't finish.
+                </p>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- ================================
+     MEMORIES
+================================ -->
+
+<section class="memories">
+
+    <div class="container">
+
+        <h2 class="section-title">
+          For Keeps📸
+        </h2>
+
+        <div class="photo-grid">
+
+            <div class="polaroid">
+
+                <img src="./thebirthdaygift index_files/us.jpg.jfif">
+
+                <p>
+                    one of my favorite picture💗
+                </p>
+
+            </div>
+
+
+            <div class="polaroid">
+
+                <img src="./thebirthdaygift index_files/her.jpg.jfif" <p="">
+                    just you being you🎀
+                <p></p>
+
+            </div>
+
+
+            <div class="polaroid">
+
+                <img src="./thebirthdaygift index_files/soulmate.jpg.jfif">
+
+                <p>
+                    an edited photo of us worth keeping ✨
+                </p>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- ================================
+     COUNTDOWN
+================================ -->
+
+<section class="countdown-section">
+
+    <div class="container">
+
+        <h2 class="section-title">
+            Until Your Next Birthday 🎂
+        </h2>
+
+        <div class="countdown">
+
+            <div class="time-box">
+
+                <strong id="days">38</strong>
+
+                <span>
+                    Days
+                </span>
+
+            </div>
+
+
+            <div class="time-box">
+
+                <strong id="hours">00</strong>
+
+                <span>
+                    Hours
+                </span>
+
+            </div>
+
+
+            <div class="time-box">
+
+                <strong id="minutes">40</strong>
+
+                <span>
+                    Minutes
+                </span>
+
+            </div>
+
+
+            <div class="time-box">
+
+                <strong id="seconds">51</strong>
+
+                <span>
+                    Seconds
+                </span>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- ================================
+     SURPRISE
+================================ -->
+
+<section class="surprise">
+
+    <div class="container">
+
+        <h2 class="section-title">
+            One More Thing... 🎁
+        </h2>
+
+        <p>
+            There's actually one more gift waiting for you.
+        </p>
+
+        <div class="gift" onclick="openGift()">
+            🎁
+        </div>
+
+        <p>
+            <strong>
+                Click the gift! 💗
+            </strong>
+        </p>
+
+        <!-- HIDDEN UNTIL GIFT IS CLICKED -->
+
+        <div class="hidden-message" id="message">
+
+            <h2>
+                I Love You! 💗
+            </h2>
+
+            <p>
+                More than this little website could ever
+                possibly explain.
+            </p>
+
+            <p style="margin-top:15px;">
+
+                Happy Birthday, my little bully! 🎀
+
+                <br>
+
+                I hope you always know how precious you are to me.
+
+            </p>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- ================================
+     FOOTER
+================================ -->
+
+<footer>
+
+    <h2>
+        Made With Love 🎀
+    </h2>
+
+    <p>
+        For the girl who deserves the prettiest birthday.
+    </p>
+
+    <p style="margin-top:10px;">
+        Happy Birthday, My Tschaine 💗
+    </p>
+
+</footer>
+
+
+<script>
+
+
+/* =========================================================
+   WELCOME SCREEN
+   ADDED
+========================================================= */
+
+function enterWebsite() {
+
+    const welcomeScreen =
+        document.getElementById("welcomeScreen");
+
+    welcomeScreen.classList.add("hide");
+
+}
+
+
+/* =========================================================
+   SURPRISE GIFT
+========================================================= */
+
+function openGift() {
+
+    const message =
+        document.getElementById("message");
+
+    /*
+       Make sure the message is revealed
+       only after she clicks the gift.
+    */
+
+    message.style.display = "block";
+
+
+    /*
+       Create the little splash of confetti.
+    */
+
+    createConfetti();
+
+}
+
+
+/* =========================================================
+   CONFETTI SPLASH
+========================================================= */
+
+function createConfetti() {
+
+    const emojis = [
+        "💗",
+        "💕",
+        "🎀",
+        "✨",
+        "🌸",
+        "💖",
+        "🎂"
+    ];
+
+
+    /*
+       Create a small burst
+       instead of a huge amount.
+    */
+
+    for (let i = 0; i < 30; i++) {
+
+        const confetti =
+            document.createElement("div");
+
+
+        confetti.innerHTML =
+            emojis[
+                Math.floor(
+                    Math.random() *
+                    emojis.length
+                )
+            ];
+
+
+        /*
+           Start from around
+           the gift/message area.
+        */
+
+        confetti.style.position =
+            "fixed";
+
+        confetti.style.left =
+            (50 + (Math.random() * 30 - 15)) + "vw";
+
+        confetti.style.top =
+            "65vh";
+
+        confetti.style.fontSize =
+            Math.random() * 15 + 15 + "px";
+
+        confetti.style.zIndex =
+            "9999";
+
+        confetti.style.pointerEvents =
+            "none";
+
+
+        document.body.appendChild(confetti);
+
+
+        const animation =
+            confetti.animate(
+
+                [
+                    {
+                        transform:
+                            "translate(0, 0) scale(1)",
+                        opacity: 1
+                    },
+
+                    {
+                        transform:
+                            `translate(
+                                ${Math.random() * 400 - 200}px,
+                                ${Math.random() * -300 - 100}px
+                            )
+                            rotate(${Math.random() * 720}deg)
+                            scale(.5)`,
+
+                        opacity: 0
+                    }
+                ],
+
+                {
+                    duration:
+                        Math.random() * 1000 + 1200,
+
+                    easing:
+                        "cubic-bezier(.17,.67,.83,.67)"
+                }
+
+            );
+
+
+        animation.onfinish =
+            () => confetti.remove();
+
+    }
+
+}
+
+
+/* =========================================================
+   BIRTHDAY COUNTDOWN
+
+   HER BIRTHDAY:
+   OCTOBER 15, 2026
+========================================================= */
+
+const birthday =
+    new Date(
+        "October 15, 2026 00:00:00"
+    ).getTime();
+
+
+function updateCountdown() {
+
+    const now =
+        new Date().getTime();
+
+
+    const difference =
+        birthday - now;
+
+
+    if (difference <= 0) {
+
+        document.getElementById("days")
+            .innerText = "00";
+
+        document.getElementById("hours")
+            .innerText = "00";
+
+        document.getElementById("minutes")
+            .innerText = "00";
+
+        document.getElementById("seconds")
+            .innerText = "00";
+
+        return;
+
+    }
+
+
+    const days =
+        Math.floor(
+            difference /
+            (1000 * 60 * 60 * 24)
+        );
+
+
+    const hours =
+        Math.floor(
+            (difference /
+            (1000 * 60 * 60)) % 24
+        );
+
+
+    const minutes =
+        Math.floor(
+            (difference /
+            (1000 * 60)) % 60
+        );
+
+
+    const seconds =
+        Math.floor(
+            (difference / 1000) % 60
+        );
+
+
+    document.getElementById("days")
+        .innerText =
+        String(days).padStart(2, "0");
+
+
+    document.getElementById("hours")
+        .innerText =
+        String(hours).padStart(2, "0");
+
+
+    document.getElementById("minutes")
+        .innerText =
+        String(minutes).padStart(2, "0");
+
+
+    document.getElementById("seconds")
+        .innerText =
+        String(seconds).padStart(2, "0");
+
+}
+
+
+setInterval(
+    updateCountdown,
+    1000
+);
+
+
+updateCountdown();
+
+
+</script>
+
+
+</body></html>
