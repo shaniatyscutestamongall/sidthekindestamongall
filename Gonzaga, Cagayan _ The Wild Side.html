@@ -1,0 +1,2709 @@
+<!DOCTYPE html>
+<!-- saved from url=(0042)file:///C:/SollerSid%20IT313/arranged.html -->
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Gonzaga, Cagayan | The Wild Side</title>
+
+<meta name="description" content="Explore Gonzaga, Cagayan — its barangays, people, history, food, fiestas, traditions and wild tourist destinations.">
+
+<style>
+
+/* =====================================================
+   RESET
+===================================================== */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: "Segoe UI", Arial, sans-serif;
+    background: #071d18;
+    color: #edf8f1;
+    line-height: 1.6;
+}
+
+img {
+    width: 100%;
+    display: block;
+}
+
+button,
+a {
+    font-family: inherit;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+.container {
+    width: min(1180px, 92%);
+    margin: auto;
+}
+
+section {
+    padding: 90px 0;
+}
+
+/* =====================================================
+   COLORS
+===================================================== */
+
+:root {
+    --dark: #071d18;
+    --dark2: #0b2e25;
+    --green: #0f513c;
+    --green2: #167052;
+    --lime: #8fd14f;
+    --gold: #f4b942;
+    --cream: #f4f0df;
+    --white: #ffffff;
+    --muted: #b5c9c0;
+}
+
+/* =====================================================
+   HEADER
+===================================================== */
+
+header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 9999;
+    background: rgba(3, 22, 18, .88);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(255,255,255,.08);
+}
+
+nav {
+    min-height: 72px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.logo {
+    font-size: 1.35rem;
+    font-weight: 900;
+    letter-spacing: 1px;
+}
+
+.logo span {
+    color: var(--lime);
+}
+
+.nav-links {
+    list-style: none;
+    display: flex;
+    gap: 28px;
+}
+
+.nav-links a {
+    color: white;
+    font-size: .95rem;
+    font-weight: 600;
+    transition: .3s;
+}
+
+.nav-links a:hover {
+    color: var(--lime);
+}
+
+.menu-btn {
+    display: none;
+    border: 0;
+    background: transparent;
+    color: white;
+    font-size: 1.8rem;
+    cursor: pointer;
+}
+
+/* =====================================================
+   HERO
+===================================================== */
+
+.hero {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    position: relative;
+
+    background:
+        linear-gradient(
+            90deg,
+            rgba(3,22,18,.95),
+            rgba(3,22,18,.65),
+            rgba(3,22,18,.25)
+        ),
+        url("https://images.unsplash.com/photo-1500534623283-312aade485b7?auto=format&fit=crop&w=2000&q=85")
+        center/cover;
+}
+
+.hero-content {
+    max-width: 780px;
+    padding-top: 70px;
+}
+
+.hero-badge {
+    display: inline-block;
+    padding: 8px 15px;
+    border: 1px solid rgba(255,255,255,.3);
+    background: rgba(255,255,255,.08);
+    border-radius: 50px;
+    margin-bottom: 20px;
+    color: #dff7e7;
+}
+
+.hero h1 {
+    font-size: clamp(3.5rem, 10vw, 7rem);
+    line-height: .9;
+    text-transform: uppercase;
+    letter-spacing: -3px;
+    margin-bottom: 25px;
+}
+
+.hero h1 span {
+    color: var(--lime);
+}
+
+.hero p {
+    color: #d5e8df;
+    max-width: 650px;
+    font-size: 1.1rem;
+    margin-bottom: 30px;
+}
+
+.hero-buttons {
+    display: flex;
+    gap: 15px;
+    flex-wrap: wrap;
+}
+
+.btn {
+    display: inline-block;
+    padding: 13px 24px;
+    border-radius: 5px;
+    font-weight: 800;
+    transition: .3s;
+}
+
+.btn-primary {
+    background: var(--gold);
+    color: #13251e;
+}
+
+.btn-primary:hover {
+    transform: translateY(-3px);
+    background: #ffd16c;
+}
+
+.btn-outline {
+    border: 2px solid white;
+}
+
+.btn-outline:hover {
+    background: white;
+    color: var(--dark);
+}
+
+/* =====================================================
+   SECTION TITLES
+===================================================== */
+
+.section-heading {
+    text-align: center;
+    margin-bottom: 50px;
+}
+
+.section-heading small {
+    color: var(--lime);
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    font-weight: 800;
+}
+
+.section-heading h2 {
+    font-size: clamp(2rem, 5vw, 3.5rem);
+    margin: 8px 0 12px;
+}
+
+.section-heading p {
+    max-width: 700px;
+    margin: auto;
+    color: var(--muted);
+}
+
+/* =====================================================
+   MUNICIPAL FEATURE
+===================================================== */
+
+.municipal {
+    background: var(--cream);
+    color: #19372d;
+}
+
+.municipal-grid {
+    display: grid;
+    grid-template-columns: 1.1fr 1fr;
+    gap: 50px;
+    align-items: center;
+}
+
+.municipal-image {
+    border-radius: 18px;
+    overflow: hidden;
+    box-shadow: 0 20px 50px rgba(0,0,0,.2);
+}
+
+.municipal-image img {
+    height: 480px;
+    object-fit: cover;
+}
+
+.municipal-text small {
+    color: #167052;
+    font-weight: 900;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+}
+
+.municipal-text h2 {
+    font-size: clamp(2.2rem, 5vw, 4rem);
+    line-height: 1;
+    margin: 12px 0 20px;
+}
+
+.municipal-text p {
+    color: #587066;
+    margin-bottom: 18px;
+}
+
+.fact-box {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 12px;
+    margin-top: 25px;
+}
+
+.fact {
+    background: #e2eadf;
+    padding: 18px;
+    border-radius: 10px;
+}
+
+.fact strong {
+    display: block;
+    font-size: 1.4rem;
+    color: #0f513c;
+}
+
+.fact span {
+    font-size: .8rem;
+    color: #63766e;
+}
+
+/* =====================================================
+   BARANGAYS
+===================================================== */
+
+.barangays {
+    background:
+        linear-gradient(rgba(7,29,24,.95),rgba(7,29,24,.95)),
+        url("https://images.unsplash.com/photo-1448375240586-882707db888b?auto=format&fit=crop&w=1800&q=80")
+        center/cover fixed;
+}
+
+.barangay-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 15px;
+}
+
+.barangay-card {
+    border: 1px solid rgba(255,255,255,.1);
+    background: rgba(255,255,255,.05);
+    border-radius: 12px;
+    padding: 22px 15px;
+    cursor: pointer;
+    transition: .3s;
+    text-align: center;
+}
+
+.barangay-card:hover {
+    transform: translateY(-6px);
+    background: var(--green);
+    border-color: var(--lime);
+}
+
+.barangay-number {
+    color: var(--gold);
+    font-weight: 900;
+    font-size: .8rem;
+}
+
+.barangay-card h3 {
+    margin-top: 5px;
+}
+
+/* =====================================================
+   WILD SIDE
+===================================================== */
+
+.wild {
+    background: #0b3026;
+}
+
+.spot-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 25px;
+}
+
+.spot-card {
+    background: #102f27;
+    border-radius: 16px;
+    overflow: hidden;
+    cursor: pointer;
+    transition: .3s;
+    border: 1px solid rgba(255,255,255,.08);
+}
+
+.spot-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 20px 40px rgba(0,0,0,.3);
+}
+
+.spot-image {
+    height: 260px;
+    overflow: hidden;
+}
+
+.spot-image img {
+    height: 100%;
+    object-fit: cover;
+    transition: .5s;
+}
+
+.spot-card:hover img {
+    transform: scale(1.08);
+}
+
+.spot-content {
+    padding: 22px;
+}
+
+.spot-content small {
+    color: var(--lime);
+    font-weight: 800;
+    text-transform: uppercase;
+}
+
+.spot-content h3 {
+    font-size: 1.5rem;
+    margin: 5px 0;
+}
+
+.spot-content p {
+    color: var(--muted);
+    font-size: .9rem;
+}
+
+/* =====================================================
+   HISTORY
+===================================================== */
+
+.history {
+    background: var(--cream);
+    color: #19372d;
+}
+
+.history .section-heading p {
+    color: #61766c;
+}
+
+.timeline {
+    max-width: 850px;
+    margin: auto;
+    position: relative;
+}
+
+.timeline::before {
+    content: "";
+    position: absolute;
+    left: 18px;
+    top: 0;
+    bottom: 0;
+    width: 3px;
+    background: #b9cdbf;
+}
+
+.timeline-item {
+    position: relative;
+    padding-left: 60px;
+    margin-bottom: 40px;
+}
+
+.timeline-dot {
+    position: absolute;
+    left: 7px;
+    top: 4px;
+    width: 25px;
+    height: 25px;
+    background: var(--gold);
+    border-radius: 50%;
+    border: 5px solid var(--cream);
+    box-shadow: 0 0 0 2px #b9cdbf;
+}
+
+.timeline-item h3 {
+    color: #0f513c;
+    margin-bottom: 5px;
+}
+
+/* =====================================================
+   FOOD
+===================================================== */
+
+.food {
+    background: #071d18;
+}
+
+.food-grid {
+    display: grid;
+    grid-template-columns: repeat(3,1fr);
+    gap: 25px;
+}
+
+.food-card {
+    background: #0e3027;
+    border-radius: 15px;
+    overflow: hidden;
+    cursor: pointer;
+    transition: .3s;
+}
+
+.food-card:hover {
+    transform: translateY(-6px);
+}
+
+.food-card img {
+    height: 220px;
+    object-fit: cover;
+}
+
+.food-info {
+    padding: 20px;
+}
+
+.food-info h3 {
+    color: white;
+}
+
+.food-info p {
+    color: var(--muted);
+    font-size: .9rem;
+}
+
+/* =====================================================
+   FIESTAS
+===================================================== */
+
+.fiestas {
+    background: #f1ead6;
+    color: #19372d;
+}
+
+.festival-grid {
+    display: grid;
+    grid-template-columns: repeat(2,1fr);
+    gap: 25px;
+}
+
+.festival-card {
+    background: white;
+    border-radius: 15px;
+    padding: 30px;
+    border-left: 6px solid var(--gold);
+    box-shadow: 0 10px 30px rgba(0,0,0,.08);
+}
+
+.festival-card span {
+    color: #167052;
+    font-weight: 900;
+}
+
+.festival-card h3 {
+    margin: 8px 0;
+    color: #0f513c;
+}
+
+.festival-card p {
+    color: #65776f;
+}
+
+/* =====================================================
+   TRADITIONS
+===================================================== */
+
+.traditions {
+    background: #0b3026;
+}
+
+.tradition-grid {
+    display: grid;
+    grid-template-columns: repeat(4,1fr);
+    gap: 20px;
+}
+
+.tradition {
+    text-align: center;
+    padding: 25px 15px;
+    background: rgba(255,255,255,.05);
+    border-radius: 15px;
+}
+
+.tradition .emoji {
+    font-size: 2.5rem;
+    margin-bottom: 10px;
+}
+
+.tradition h3 {
+    margin-bottom: 7px;
+}
+
+.tradition p {
+    color: var(--muted);
+    font-size: .9rem;
+}
+
+/* =====================================================
+   QUOTE
+===================================================== */
+
+.quote {
+    text-align: center;
+    background:
+        linear-gradient(rgba(5,43,34,.86),rgba(5,43,34,.86)),
+        url("https://images.unsplash.com/photo-1500534623283-312aade485b7?auto=format&fit=crop&w=1800&q=80")
+        center/cover fixed;
+}
+
+.quote blockquote {
+    max-width: 850px;
+    margin: auto;
+    font-size: clamp(2rem,5vw,4rem);
+    line-height: 1.15;
+    font-weight: 900;
+}
+
+.quote p {
+    color: #c9ddd5;
+    margin-top: 20px;
+}
+
+/* =====================================================
+   FOOTER
+===================================================== */
+
+footer {
+    background: #03130f;
+    padding: 50px 0 25px;
+}
+
+.footer-grid {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr;
+    gap: 40px;
+    margin-bottom: 40px;
+}
+
+footer h3 {
+    margin-bottom: 12px;
+}
+
+footer p,
+footer li {
+    color: #91aaa0;
+    font-size: .9rem;
+}
+
+footer ul {
+    list-style: none;
+}
+
+footer li {
+    margin-bottom: 8px;
+}
+
+footer a:hover {
+    color: var(--lime);
+}
+
+.copyright {
+    border-top: 1px solid rgba(255,255,255,.08);
+    padding-top: 20px;
+    text-align: center;
+    color: #718b81;
+    font-size: .85rem;
+}
+
+/* =====================================================
+   MODAL
+===================================================== */
+
+.modal {
+    position: fixed;
+    inset: 0;
+    z-index: 20000;
+    background: rgba(0,0,0,.82);
+    display: none;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+}
+
+.modal.active {
+    display: flex;
+}
+
+.modal-box {
+    background: #102f27;
+    width: min(850px, 100%);
+    max-height: 90vh;
+    overflow-y: auto;
+    border-radius: 18px;
+    position: relative;
+    animation: modalIn .25s ease;
+}
+
+@keyframes modalIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.modal-image {
+    height: 330px;
+}
+
+.modal-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.modal-content {
+    padding: 30px;
+}
+
+.modal-content h2 {
+    font-size: 2rem;
+    color: white;
+    margin-bottom: 10px;
+}
+
+.modal-content p {
+    color: #bdd0c8;
+    margin-bottom: 15px;
+}
+
+.modal-facts {
+    display: grid;
+    grid-template-columns: repeat(3,1fr);
+    gap: 12px;
+    margin-top: 20px;
+}
+
+.modal-fact {
+    background: rgba(255,255,255,.06);
+    padding: 15px;
+    border-radius: 10px;
+}
+
+.modal-fact strong {
+    display: block;
+    color: var(--gold);
+}
+
+.modal-close {
+    position: absolute;
+    right: 15px;
+    top: 15px;
+    width: 40px;
+    height: 40px;
+    border: 0;
+    border-radius: 50%;
+    background: rgba(0,0,0,.6);
+    color: white;
+    font-size: 1.4rem;
+    cursor: pointer;
+    z-index: 2;
+}
+
+/* =====================================================
+   RESPONSIVE
+===================================================== */
+
+@media(max-width: 950px) {
+
+    .barangay-grid {
+        grid-template-columns: repeat(3,1fr);
+    }
+
+    .spot-grid,
+    .food-grid {
+        grid-template-columns: repeat(2,1fr);
+    }
+
+    .tradition-grid {
+        grid-template-columns: repeat(2,1fr);
+    }
+
+    .municipal-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .municipal-image img {
+        height: 400px;
+    }
+
+    .footer-grid {
+        grid-template-columns: 1fr 1fr;
+    }
+}
+
+@media(max-width: 700px) {
+
+    .menu-btn {
+        display: block;
+    }
+
+    .nav-links {
+        position: absolute;
+        top: 72px;
+        left: 0;
+        width: 100%;
+        background: #031c16;
+        display: none;
+        flex-direction: column;
+        text-align: center;
+        gap: 0;
+        padding: 15px 0;
+    }
+
+    .nav-links.active {
+        display: flex;
+    }
+
+    .nav-links li {
+        padding: 12px;
+    }
+
+    .hero h1 {
+        font-size: 3.5rem;
+    }
+
+    .barangay-grid,
+    .spot-grid,
+    .food-grid,
+    .festival-grid,
+    .tradition-grid,
+    .footer-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .fact-box {
+        grid-template-columns: 1fr;
+    }
+
+    .modal-facts {
+        grid-template-columns: 1fr;
+    }
+
+    .modal-image {
+        height: 240px;
+    }
+
+    section {
+        padding: 65px 0;
+    }
+}
+
+
+/* ===== ANIMATED THEME ===== */
+body{overflow-x:hidden;}
+body::before{content:"";position:fixed;inset:0;pointer-events:none;z-index:9990;background:radial-gradient(circle at 20% 20%,rgba(143,209,79,.08),transparent 25%),radial-gradient(circle at 80% 70%,rgba(244,185,66,.07),transparent 28%);animation:ambient 10s ease-in-out infinite alternate;}
+@keyframes ambient{from{transform:scale(1);opacity:.65}to{transform:scale(1.08);opacity:1}}
+.hero{background-size:cover;animation:heroZoom 18s ease-in-out infinite alternate;}
+@keyframes heroZoom{from{background-size:100% auto}to{background-size:112% auto}}
+.hero-content{animation:fadeUp 1s ease both;}
+.hero-badge{animation:float 3s ease-in-out infinite;}
+@keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-7px)}}
+@keyframes fadeUp{from{opacity:0;transform:translateY(28px)}to{opacity:1;transform:translateY(0)}}
+.barangay-card,.spot-card,.food-card,.festival-card,.tradition{animation:cardIn .7s ease both;transition:transform .35s ease,box-shadow .35s ease,background .35s ease;}
+.barangay-card:hover,.spot-card:hover,.food-card:hover,.festival-card:hover,.tradition:hover{transform:translateY(-10px) scale(1.02);box-shadow:0 18px 40px rgba(0,0,0,.22);}
+@keyframes cardIn{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
+.logo span{display:inline-block;animation:pulse 1.8s ease-in-out infinite;}
+@keyframes pulse{0%,100%{transform:scale(1)}50%{transform:scale(1.3)}}
+.btn-primary{animation:buttonGlow 2s ease-in-out infinite;}
+@keyframes buttonGlow{0%,100%{box-shadow:0 0 0 rgba(244,185,66,0)}50%{box-shadow:0 0 22px rgba(244,185,66,.3)}}
+.modal-box{animation:modalIn .35s cubic-bezier(.2,.8,.2,1);} 
+@keyframes modalIn{from{opacity:0;transform:translateY(35px) scale(.96)}to{opacity:1;transform:translateY(0) scale(1)}}
+.municipal-image img,.spot-image img,.food-card img{transition:transform .7s cubic-bezier(.2,.8,.2,1);}
+.municipal-image:hover img,.spot-card:hover .spot-image img,.food-card:hover img{transform:scale(1.08);}
+@media(prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important;scroll-behavior:auto!important;}}
+
+
+/* ===== ENHANCED ANIMATED THEME ===== */
+
+/* Floating atmospheric particles */
+body::after {
+    content: "";
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: 9991;
+    opacity: .45;
+    background-image:
+        radial-gradient(circle, rgba(255,255,255,.55) 1px, transparent 1.5px),
+        radial-gradient(circle, rgba(143,209,79,.35) 1px, transparent 1.5px);
+    background-size: 85px 85px, 130px 130px;
+    background-position: 0 0, 40px 70px;
+    animation: particleDrift 24s linear infinite;
+}
+@keyframes particleDrift {
+    from { transform: translate3d(0,0,0); }
+    to { transform: translate3d(-85px,-130px,0); }
+}
+
+/* Smooth reveal animation */
+.reveal {
+    opacity: 0;
+    transform: translateY(35px);
+    transition: opacity .8s ease, transform .8s cubic-bezier(.2,.8,.2,1);
+}
+.reveal.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Hero atmosphere */
+.hero::before {
+    content: "";
+    position: absolute;
+    inset: -15%;
+    background:
+        radial-gradient(circle at 70% 35%, rgba(143,209,79,.16), transparent 24%),
+        radial-gradient(circle at 35% 75%, rgba(244,185,66,.10), transparent 22%);
+    animation: heroAura 8s ease-in-out infinite alternate;
+    pointer-events: none;
+}
+.hero::after {
+    content: "";
+    position: absolute;
+    left: -10%;
+    right: -10%;
+    bottom: -90px;
+    height: 180px;
+    background: rgba(7,29,24,.55);
+    filter: blur(35px);
+    border-radius: 50%;
+    animation: waveFloat 5s ease-in-out infinite alternate;
+}
+@keyframes heroAura {
+    from { transform: scale(1) rotate(0deg); opacity: .7; }
+    to { transform: scale(1.12) rotate(2deg); opacity: 1; }
+}
+@keyframes waveFloat {
+    from { transform: translateX(-2%) scaleX(1); }
+    to { transform: translateX(2%) scaleX(1.08); }
+}
+
+/* Animated navigation */
+header {
+    transition: background .35s ease, box-shadow .35s ease;
+}
+header.scrolled {
+    background: rgba(3,22,18,.96);
+    box-shadow: 0 10px 35px rgba(0,0,0,.22);
+}
+.nav-links a {
+    position: relative;
+}
+.nav-links a::after {
+    content: "";
+    position: absolute;
+    left: 50%;
+    bottom: -7px;
+    width: 0;
+    height: 2px;
+    background: var(--lime);
+    transform: translateX(-50%);
+    transition: width .3s ease;
+}
+.nav-links a:hover::after {
+    width: 100%;
+}
+
+/* More lively cards */
+.barangay-card,
+.spot-card,
+.food-card,
+.festival-card,
+.tradition {
+    will-change: transform;
+}
+.barangay-card:hover,
+.spot-card:hover,
+.food-card:hover {
+    transform: translateY(-10px) scale(1.025);
+}
+
+/* Image shine effect */
+.spot-image,
+.municipal-image,
+.food-card {
+    position: relative;
+}
+.spot-image::after,
+.municipal-image::after,
+.food-card::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: -120%;
+    width: 55%;
+    height: 100%;
+    background: linear-gradient(100deg, transparent, rgba(255,255,255,.22), transparent);
+    transform: skewX(-18deg);
+    pointer-events: none;
+    transition: left .8s ease;
+}
+.spot-card:hover .spot-image::after,
+.municipal-image:hover::after,
+.food-card:hover::after {
+    left: 150%;
+}
+
+/* Animated section heading */
+.section-heading h2 {
+    position: relative;
+    display: inline-block;
+}
+.section-heading h2::after {
+    content: "";
+    position: absolute;
+    left: 50%;
+    bottom: -10px;
+    width: 45px;
+    height: 3px;
+    border-radius: 10px;
+    background: var(--lime);
+    transform: translateX(-50%);
+    animation: headingLine 2.2s ease-in-out infinite;
+}
+@keyframes headingLine {
+    0%,100% { width: 35px; opacity: .55; }
+    50% { width: 80px; opacity: 1; }
+}
+
+/* Floating timeline dots */
+.timeline-dot {
+    animation: dotPulse 2.2s ease-in-out infinite;
+}
+@keyframes dotPulse {
+    0%,100% { transform: scale(1); box-shadow: 0 0 0 2px #b9cdbf, 0 0 0 rgba(244,185,66,0); }
+    50% { transform: scale(1.15); box-shadow: 0 0 0 2px #b9cdbf, 0 0 20px rgba(244,185,66,.45); }
+}
+
+/* Festival / tradition gentle floating motion */
+.festival-card:nth-child(odd),
+.tradition:nth-child(odd) {
+    animation: gentleFloat 5s ease-in-out infinite;
+}
+.festival-card:nth-child(even),
+.tradition:nth-child(even) {
+    animation: gentleFloat 5s ease-in-out 1.2s infinite;
+}
+@keyframes gentleFloat {
+    0%,100% { transform: translateY(0); }
+    50% { transform: translateY(-5px); }
+}
+
+/* Scroll progress */
+#scrollProgress {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 3px;
+    width: 0;
+    background: linear-gradient(90deg, var(--lime), var(--gold));
+    z-index: 10001;
+    box-shadow: 0 0 12px rgba(143,209,79,.5);
+}
+
+/* Back-to-top button */
+#backTop {
+    position: fixed;
+    right: 24px;
+    bottom: 24px;
+    width: 46px;
+    height: 46px;
+    border: 0;
+    border-radius: 50%;
+    background: var(--gold);
+    color: #13251e;
+    font-size: 1.2rem;
+    font-weight: 900;
+    cursor: pointer;
+    z-index: 9998;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(15px);
+    transition: .35s ease;
+}
+#backTop.show {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+#backTop:hover {
+    transform: translateY(-5px) scale(1.08);
+    box-shadow: 0 10px 25px rgba(244,185,66,.3);
+}
+
+/* Respect accessibility settings */
+@media(prefers-reduced-motion: reduce) {
+    body::after,
+    .hero::before,
+    .hero::after,
+    .timeline-dot,
+    .festival-card,
+    .tradition {
+        animation: none !important;
+    }
+    .reveal {
+        opacity: 1;
+        transform: none;
+    }
+}
+
+
+/* HOME SECTION — ANIMATED IMAGE BACKGROUND */
+#home {
+    min-height: 100vh;
+    overflow: hidden;
+    isolation: isolate;
+    background:
+        linear-gradient(90deg, rgba(5, 119, 15, 0.88), rgba(3,22,18,.58), rgba(3,22,18,.22)),
+        url("https://i.ytimg.com/vi/vzFfXYfEbzE/maxresdefault.jpg")
+        center / cover no-repeat;
+    background: fixed;
+}
+#home::before {
+    content: "";
+    position: absolute;
+    inset: -5%;
+    z-index: -2;
+    background:
+        linear-gradient(rgba(3,22,18,.18), rgba(3,22,18,.18)),
+        url("https://i.ytimg.com/vi/vzFfXYfEbzE/maxresdefault.jpg")
+        center / cover no-repeat;
+    animation: homeZoom 18s ease-in-out infinite alternate;
+}
+#home::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    background:
+        radial-gradient(circle at 75% 35%, rgba(143,209,79,.18), transparent 26%),
+        linear-gradient(180deg, rgba(3,22,18,.10), rgba(3,22,18,.72)),
+        url("https://i.ytimg.com/vi/vzFfXYfEbzE/maxresdefault.jpg")
+    
+}
+#home .hero-content {
+    position: relative;
+    z-index: 2;
+    animation: homeContentIn 1.2s cubic-bezier(.2,.8,.2,1) both;
+}
+#home h1, #home p { text-shadow: 0 6px 25px rgba(0,0,0,.4); }
+
+@keyframes homeZoom {
+    from { transform: scale(1); }
+    to { transform: scale(1.08); }
+}
+@keyframes homeGlow {
+    from { opacity: .65; }
+    to { opacity: 1; }
+}
+@keyframes homeContentIn {
+    from { opacity: 0; transform: translateY(35px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+@media (max-width: 700px) {
+    #home { background-attachment: scroll; }
+}
+@media (prefers-reduced-motion: reduce) {
+    #home::before, #home::after, #home .hero-content {
+        animation: none !important;
+    }
+}
+
+</style>
+</head>
+
+<body>
+<div id="scrollProgress" style="width: 94.0441%;"></div>
+<button id="backTop" aria-label="Back to top" class="show">↑</button>
+
+
+<!-- =====================================================
+     NAVIGATION
+===================================================== -->
+
+<header class="scrolled">
+
+<div class="container">
+
+<nav>
+
+<a href="file:///C:/SollerSid%20IT313/arranged.html#home" class="logo">
+GONZAGA<span>!</span>
+</a>
+
+<button class="menu-btn" id="menuBtn">
+☰
+</button>
+
+<ul class="nav-links" id="navLinks">
+
+<li><a href="file:///C:/SollerSid%20IT313/arranged.html#home">Home</a></li>
+<li><a href="file:///C:/SollerSid%20IT313/arranged.html#barangays">Barangays</a></li>
+<li><a href="file:///C:/SollerSid%20IT313/arranged.html#wild">Wild Side</a></li>
+<li><a href="file:///C:/SollerSid%20IT313/arranged.html#history">History</a></li>
+<li><a href="file:///C:/SollerSid%20IT313/arranged.html#food">Food</a></li>
+<li><a href="file:///C:/SollerSid%20IT313/arranged.html#fiestas">Fiestas</a></li>
+
+</ul>
+
+</nav>
+
+</div>
+
+</header>
+
+
+<!-- =====================================================
+     HERO
+===================================================== -->
+
+<section class="hero" id="home">
+
+<div class="container">
+
+<div class="hero-content">
+
+<div class="hero-badge">
+🌿 Cagayan Valley • Philippines
+</div>
+
+<h1>
+Explore<br>
+<span>Gonzaga</span>
+</h1>
+
+<p>
+Where the mountains meet the sea. Discover the people,
+barangays, history, food, traditions and wild destinations
+of Gonzaga, Cagayan.
+</p>
+
+<div class="hero-buttons">
+
+<a href="file:///C:/SollerSid%20IT313/arranged.html#wild" class="btn btn-primary">
+EXPLORE THE WILD
+</a>
+
+<a href="file:///C:/SollerSid%20IT313/arranged.html#barangays" class="btn btn-outline">
+VIEW BARANGAYS
+</a>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- =====================================================
+     MUNICIPAL HALL
+===================================================== -->
+
+<section class="municipal">
+
+<div class="container">
+
+<div class="municipal-grid" reveal="">
+
+<div class="municipal-image">
+
+<!--
+IMPORTANT:
+Replace this URL with your actual photo of
+Gonzaga Municipal Hall for the most accurate result.
+-->
+
+<img src="./Gonzaga, Cagayan _ The Wild Side_files/image" alt="Gonzaga Municipal Hall">
+
+</div>
+
+<div class="municipal-text">
+
+<small>Welcome Home</small>
+
+<h2>
+Gonzaga Municipal Hall
+</h2>
+
+<p>
+The municipal center represents the heart of local government
+and public service in Gonzaga. It is part of the community's
+identity and a familiar landmark for residents and visitors.
+</p>
+
+<p>
+From this community center, Gonzaga continues to grow while
+preserving its natural environment, culture and local identity.
+</p>
+
+<div class="fact-box">
+
+<div class="fact">
+<strong>25</strong>
+<span>Barangays</span>
+</div>
+
+<div class="fact">
+<strong>Cagayan</strong>
+<span>Province</span>
+</div>
+
+<div class="fact">
+<strong>PH</strong>
+<span>Philippines</span>
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- =====================================================
+     BARANGAYS
+===================================================== -->
+
+<section class="barangays" id="barangays">
+
+<div class="container">
+
+<div class="section-heading" reveal="">
+
+<small>Discover Your Community</small>
+
+<h2>Barangays of Gonzaga</h2>
+
+<p>
+Click any barangay to discover its community,
+landscape, population and notable places.
+</p>
+
+</div>
+
+<div class="barangay-grid" id="barangayGrid">
+<div class="barangay-card reveal visible" style="transition-delay: 0ms;">
+
+<div class="barangay-number">
+BARANGAY 01
+</div>
+
+<h3>Amunitan</h3>
+
+</div><div class="barangay-card reveal visible" style="transition-delay: 45ms;">
+
+<div class="barangay-number">
+BARANGAY 02
+</div>
+
+<h3>Batangan</h3>
+
+</div><div class="barangay-card reveal visible" style="transition-delay: 90ms;">
+
+<div class="barangay-number">
+BARANGAY 03
+</div>
+
+<h3>Baua</h3>
+
+</div><div class="barangay-card reveal visible" style="transition-delay: 135ms;">
+
+<div class="barangay-number">
+BARANGAY 04
+</div>
+
+<h3>Cabanbanan Norte</h3>
+
+</div><div class="barangay-card reveal visible" style="transition-delay: 180ms;">
+
+<div class="barangay-number">
+BARANGAY 05
+</div>
+
+<h3>Cabanbanan Sur</h3>
+
+</div><div class="barangay-card reveal visible" style="transition-delay: 225ms;">
+
+<div class="barangay-number">
+BARANGAY 06
+</div>
+
+<h3>Cabiraoan</h3>
+
+</div><div class="barangay-card reveal visible" style="transition-delay: 270ms;">
+
+<div class="barangay-number">
+BARANGAY 07
+</div>
+
+<h3>Calayan</h3>
+
+</div><div class="barangay-card reveal visible" style="transition-delay: 315ms;">
+
+<div class="barangay-number">
+BARANGAY 08
+</div>
+
+<h3>Callao</h3>
+
+</div><div class="barangay-card reveal visible" style="transition-delay: 360ms;">
+
+<div class="barangay-number">
+BARANGAY 09
+</div>
+
+<h3>Caroan</h3>
+
+</div><div class="barangay-card reveal visible" style="transition-delay: 405ms;">
+
+<div class="barangay-number">
+BARANGAY 10
+</div>
+
+<h3>Casitan</h3>
+
+</div><div class="barangay-card reveal visible" style="transition-delay: 450ms;">
+
+<div class="barangay-number">
+BARANGAY 11
+</div>
+
+<h3>Flourishing</h3>
+
+</div><div class="barangay-card reveal visible" style="transition-delay: 450ms;">
+
+<div class="barangay-number">
+BARANGAY 12
+</div>
+
+<h3>Ipil</h3>
+
+</div><div class="barangay-card reveal visible" style="transition-delay: 450ms;">
+
+<div class="barangay-number">
+BARANGAY 13
+</div>
+
+<h3>Isca</h3>
+
+</div><div class="barangay-card reveal visible" style="transition-delay: 450ms;">
+
+<div class="barangay-number">
+BARANGAY 14
+</div>
+
+<h3>Magrafil</h3>
+
+</div><div class="barangay-card reveal visible" style="transition-delay: 450ms;">
+
+<div class="barangay-number">
+BARANGAY 15
+</div>
+
+<h3>Minanga</h3>
+
+</div><div class="barangay-card reveal visible" style="transition-delay: 450ms;">
+
+<div class="barangay-number">
+BARANGAY 16
+</div>
+
+<h3>Paradise</h3>
+
+</div><div class="barangay-card reveal visible" style="transition-delay: 450ms;">
+
+<div class="barangay-number">
+BARANGAY 17
+</div>
+
+<h3>Pateng</h3>
+
+</div><div class="barangay-card reveal visible" style="transition-delay: 450ms;">
+
+<div class="barangay-number">
+BARANGAY 18
+</div>
+
+<h3>Progressive</h3>
+
+</div><div class="barangay-card reveal visible" style="transition-delay: 450ms;">
+
+<div class="barangay-number">
+BARANGAY 19
+</div>
+
+<h3>Rebecca</h3>
+
+</div><div class="barangay-card reveal visible" style="transition-delay: 450ms;">
+
+<div class="barangay-number">
+BARANGAY 20
+</div>
+
+<h3>San Jose</h3>
+
+</div><div class="barangay-card reveal visible" style="transition-delay: 450ms;">
+
+<div class="barangay-number">
+BARANGAY 21
+</div>
+
+<h3>Santa Clara</h3>
+
+</div><div class="barangay-card reveal visible" style="transition-delay: 450ms;">
+
+<div class="barangay-number">
+BARANGAY 22
+</div>
+
+<h3>Santa Cruz</h3>
+
+</div><div class="barangay-card reveal visible" style="transition-delay: 450ms;">
+
+<div class="barangay-number">
+BARANGAY 23
+</div>
+
+<h3>Santa Maria</h3>
+
+</div><div class="barangay-card reveal visible" style="transition-delay: 450ms;">
+
+<div class="barangay-number">
+BARANGAY 24
+</div>
+
+<h3>Smart</h3>
+
+</div><div class="barangay-card reveal visible" style="transition-delay: 450ms;">
+
+<div class="barangay-number">
+BARANGAY 25
+</div>
+
+<h3>Tapel</h3>
+
+</div></div>
+
+</div>
+
+</section>
+
+
+<!-- =====================================================
+     WILD SIDE
+===================================================== -->
+
+<section class="wild" id="wild">
+
+<div class="container">
+
+<div class="section-heading">
+
+<small>Adventure Awaits</small>
+
+<h2>🌋 The Wild Side of Gonzaga</h2>
+
+<p>
+Click a destination to see a larger photo and learn more
+about the natural beauty waiting to be explored.
+</p>
+
+</div>
+
+<div class="spot-grid" id="spotGrid">
+<article class="spot-card reveal visible" style="transition-delay: 450ms;">
+
+<div class="spot-image">
+
+<img src="./Gonzaga, Cagayan _ The Wild Side_files/photo-1464822759023-fed622ff2c3b" alt="Mt. Cagua" loading="lazy">
+
+</div>
+
+<div class="spot-content">
+
+<small>VOLCANO • ADVENTURE</small>
+
+<h3>Mt. Cagua</h3>
+
+<p>
+Click to explore this destination.
+</p>
+
+</div>
+
+</article><article class="spot-card reveal visible" style="transition-delay: 450ms;">
+
+<div class="spot-image">
+
+<img src="./Gonzaga, Cagayan _ The Wild Side_files/photo-1507525428034-b723cf961d3e" alt="Gonzaga Coastline" loading="lazy">
+
+</div>
+
+<div class="spot-content">
+
+<small>SEA • COAST</small>
+
+<h3>Gonzaga Coastline</h3>
+
+<p>
+Click to explore this destination.
+</p>
+
+</div>
+
+</article><article class="spot-card reveal visible" style="transition-delay: 450ms;">
+
+<div class="spot-image">
+
+<img src="./Gonzaga, Cagayan _ The Wild Side_files/photo-1448375240586-882707db888b" alt="Forests &amp; Trails" loading="lazy">
+
+</div>
+
+<div class="spot-content">
+
+<small>WILD • TREKKING</small>
+
+<h3>Forests &amp; Trails</h3>
+
+<p>
+Click to explore this destination.
+</p>
+
+</div>
+
+</article><article class="spot-card reveal visible" style="transition-delay: 450ms;">
+
+<div class="spot-image">
+
+<img src="./Gonzaga, Cagayan _ The Wild Side_files/photo-1432405972618-c60b0225b8f9" alt="Waterfalls" loading="lazy">
+
+</div>
+
+<div class="spot-content">
+
+<small>WATER • ADVENTURE</small>
+
+<h3>Waterfalls</h3>
+
+<p>
+Click to explore this destination.
+</p>
+
+</div>
+
+</article><article class="spot-card reveal visible" style="transition-delay: 450ms;">
+
+<div class="spot-image">
+
+<img src="./Gonzaga, Cagayan _ The Wild Side_files/photo-1500382017468-9049fed747ef" alt="Agricultural Landscapes" loading="lazy">
+
+</div>
+
+<div class="spot-content">
+
+<small>FARMS • COUNTRYSIDE</small>
+
+<h3>Agricultural Landscapes</h3>
+
+<p>
+Click to explore this destination.
+</p>
+
+</div>
+
+</article><article class="spot-card reveal visible" style="transition-delay: 450ms;">
+
+<div class="spot-image">
+
+<img src="./Gonzaga, Cagayan _ The Wild Side_files/photo-1500534623283-312aade485b7" alt="Mountain Views" loading="lazy">
+
+</div>
+
+<div class="spot-content">
+
+<small>MOUNTAIN • NATURE</small>
+
+<h3>Mountain Views</h3>
+
+<p>
+Click to explore this destination.
+</p>
+
+</div>
+
+</article></div>
+
+</div>
+
+</section>
+
+
+<!-- =====================================================
+     HISTORY
+===================================================== -->
+
+<section class="history" id="history">
+
+<div class="container">
+
+<div class="section-heading">
+
+<small>Our Story</small>
+
+<h2>History of Gonzaga</h2>
+
+<p>
+A short journey through the story and development
+of our hometown.
+</p>
+
+</div>
+
+<div class="timeline" reveal="">
+
+<div class="timeline-item">
+
+<div class="timeline-dot"></div>
+
+<h3>Early Communities</h3>
+
+<p>
+The area that is now Gonzaga was inhabited by communities
+whose lives were closely connected with the land, forests,
+rivers and coastal environment.
+</p>
+
+</div>
+
+
+<div class="timeline-item">
+
+<div class="timeline-dot"></div>
+
+<h3>1918 — Gonzaga Becomes a Municipality</h3>
+
+<p>
+Gonzaga was established as an independent municipality in
+1918. The municipality was named in honor of
+Gracio P. Gonzaga, who served as the first Filipino governor
+of Cagayan.
+</p>
+
+</div>
+
+
+<div class="timeline-item">
+
+<div class="timeline-dot"></div>
+
+<h3>Growth of Agriculture and Coastal Communities</h3>
+
+<p>
+Agriculture, fishing, coconut production and other local
+livelihoods became important parts of Gonzaga's development.
+</p>
+
+</div>
+
+
+<div class="timeline-item">
+
+<div class="timeline-dot"></div>
+
+<h3>Gonzaga Today</h3>
+
+<p>
+Modern Gonzaga continues to develop while its communities
+work to preserve its natural resources, local traditions,
+agriculture and cultural identity.
+</p>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- =====================================================
+     FOOD
+===================================================== -->
+
+<section class="food" id="food">
+
+<div class="container">
+
+<div class="section-heading">
+
+<small>Taste of Home</small>
+
+<h2>🍲 Food &amp; Local Delicacies</h2>
+
+<p>
+Discover the flavors commonly associated with Cagayan
+and the local communities of Gonzaga.
+</p>
+
+</div>
+
+<div class="food-grid">
+
+<div class="food-card" onclick="openModal(
+&#39;Pancit Batil Patung&#39;,
+&#39;https://images.unsplash.com/photo-1559314809-0d155014e29e?auto=format&amp;fit=crop&amp;w=1200&amp;q=85&#39;,
+&#39;Pancit batil patung is a popular noodle dish associated with Northern Luzon. It is commonly served with toppings, egg and a savory sauce.&#39;
+)">
+
+<img src="./Gonzaga, Cagayan _ The Wild Side_files/photo-1559314809-0d155014e29e" alt="Pancit">
+
+<div class="food-info">
+
+<h3>Pancit</h3>
+
+<p>
+A familiar noodle favorite in Northern Luzon.
+</p>
+
+</div>
+
+</div>
+
+
+<div class="food-card" onclick="openModal(
+&#39;Sticky Rice &amp; Local Kakanin&#39;,
+&#39;https://images.unsplash.com/photo-1601050690597-df0568f70950?auto=format&amp;fit=crop&amp;w=1200&amp;q=85&#39;,
+&#39;Rice-based delicacies are part of Filipino celebrations and family gatherings. Local versions may vary from one community to another.&#39;
+)">
+
+<img src="./Gonzaga, Cagayan _ The Wild Side_files/photo-1601050690597-df0568f70950" alt="Filipino rice delicacies">
+
+<div class="food-info">
+
+<h3>Kakanin</h3>
+
+<p>
+Traditional rice-based delicacies enjoyed during gatherings.
+</p>
+
+</div>
+
+</div>
+
+
+<div class="food-card" onclick="openModal(
+&#39;Fresh Seafood&#39;,
+&#39;https://images.unsplash.com/photo-1544943910-4c1dc44aab44?auto=format&amp;fit=crop&amp;w=1200&amp;q=85&#39;,
+&#39;Because Gonzaga is a coastal municipality, seafood and fish are an important part of local food culture and livelihood.&#39;
+)">
+
+<img src="./Gonzaga, Cagayan _ The Wild Side_files/photo-1544943910-4c1dc44aab44" alt="Fresh seafood">
+
+<div class="food-info">
+
+<h3>Fresh Seafood</h3>
+
+<p>
+Fresh catches connected to Gonzaga's coastal communities.
+</p>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- =====================================================
+     FIESTAS
+===================================================== -->
+
+<section class="fiestas" id="fiestas">
+
+<div class="container">
+
+<div class="section-heading">
+
+<small>Celebrate Gonzaga</small>
+
+<h2>🎉 Fiestas &amp; Yearly Traditions</h2>
+
+<p>
+Festivals and community gatherings bring families,
+barangays and visitors together throughout the year.
+</p>
+
+</div>
+
+<div class="festival-grid" reveal="">
+
+<div class="festival-card">
+
+<span>ANNUAL CELEBRATION</span>
+
+<h3>Town Fiesta</h3>
+
+<p>
+Gonzaga's annual fiesta is a time for religious activities,
+community gatherings, family reunions, food, entertainment
+and local celebrations.
+</p>
+
+</div>
+
+
+<div class="festival-card">
+
+<span>COMMUNITY TRADITION</span>
+
+<h3>Barangay Fiesta</h3>
+
+<p>
+Individual barangays also celebrate their own fiestas,
+bringing together residents, families and visitors.
+</p>
+
+</div>
+
+
+<div class="festival-card">
+
+<span>HARVEST &amp; LIVELIHOOD</span>
+
+<h3>Agricultural Traditions</h3>
+
+<p>
+Agricultural communities observe traditions connected with
+planting, harvesting and giving thanks for the year's work.
+</p>
+
+</div>
+
+
+<div class="festival-card">
+
+<span>HOLIDAY SEASON</span>
+
+<h3>Christmas in Gonzaga</h3>
+
+<p>
+Christmas brings families home through reunions,
+community events, decorations, food and celebrations.
+</p>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- =====================================================
+     YEARLY TRADITIONS
+===================================================== -->
+
+<section class="traditions">
+
+<div class="container">
+
+<div class="section-heading">
+
+<small>Life in Gonzaga</small>
+
+<h2>Traditions That Bring Us Together</h2>
+
+</div>
+
+<div class="tradition-grid" reveal="">
+
+<div class="tradition">
+
+<div class="emoji">🌾</div>
+
+<h3>Harvest</h3>
+
+<p>
+Celebrating the hard work of farming communities.
+</p>
+
+</div>
+
+
+<div class="tradition">
+
+<div class="emoji">⛪</div>
+
+<h3>Fiesta</h3>
+
+<p>
+Faith, food and community celebrations.
+</p>
+
+</div>
+
+
+<div class="tradition">
+
+<div class="emoji">👨‍👩‍👧‍👦</div>
+
+<h3>Family</h3>
+
+<p>
+Family reunions and coming home to Gonzaga.
+</p>
+
+</div>
+
+
+<div class="tradition">
+
+<div class="emoji">🌊</div>
+
+<h3>Coastal Life</h3>
+
+<p>
+Livelihoods and traditions connected to the sea.
+</p>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- =====================================================
+     QUOTE
+===================================================== -->
+
+<section class="quote">
+
+<div class="container">
+
+<blockquote reveal="">
+"Come for the adventure.
+Stay for the people.
+Remember Gonzaga."
+</blockquote>
+
+<p>
+Gonzaga, Cagayan — Where the Wild Meets Home.
+</p>
+
+</div>
+
+</section>
+
+
+<!-- =====================================================
+     FOOTER
+===================================================== -->
+
+<footer>
+
+<div class="container">
+
+<div class="footer-grid">
+
+<div>
+
+<h3>GONZAGA!</h3>
+
+<p>
+A community-made webpage celebrating the people,
+places, history, food and traditions of Gonzaga, Cagayan.
+</p>
+
+</div>
+
+<div>
+
+<h3>Explore</h3>
+
+<ul>
+<li><a href="file:///C:/SollerSid%20IT313/arranged.html#barangays">Barangays</a></li>
+<li><a href="file:///C:/SollerSid%20IT313/arranged.html#wild">Wild Side</a></li>
+<li><a href="file:///C:/SollerSid%20IT313/arranged.html#history">History</a></li>
+<li><a href="file:///C:/SollerSid%20IT313/arranged.html#food">Food</a></li>
+</ul>
+
+</div>
+
+<div>
+
+<h3>Location</h3>
+
+<p>
+Gonzaga<br>
+Cagayan<br>
+Philippines
+</p>
+
+</div>
+
+</div>
+
+<div class="copyright">
+
+© <span id="year">2026</span> Gonzaga, Cagayan.
+Made with ❤️ for our hometown.
+
+</div>
+
+</div>
+
+</footer>
+
+
+<!-- =====================================================
+     MODAL
+===================================================== -->
+
+<div class="modal" id="modal">
+
+<div class="modal-box">
+
+<button class="modal-close" onclick="closeModal()">
+×
+</button>
+
+<div class="modal-image">
+
+<img id="modalImage" src="file:///C:/SollerSid%20IT313/arranged.html" alt="">
+
+</div>
+
+<div class="modal-content">
+
+<h2 id="modalTitle"></h2>
+
+<p id="modalDescription"></p>
+
+<div class="modal-facts" id="modalFacts"></div>
+
+</div>
+
+</div>
+
+</div>
+
+
+<script>
+
+/* =====================================================
+   BARANGAY DATA
+
+   IMPORTANT:
+   Replace population values with the latest
+   official PSA / municipal figures when available.
+===================================================== */
+
+const barangays = [
+
+{
+name: "Amunitan",
+population: "Add official population",
+description: "A community in Gonzaga surrounded by the municipality's agricultural and natural landscapes.",
+spots: "Local farms and surrounding countryside",
+image: "https://images.unsplash.com/photo-1500382017468-9049fed747ef?auto=format&fit=crop&w=1000&q=80"
+},
+
+{
+name: "Batangan",
+population: "Add official population",
+description: "A barangay with a rural atmosphere and landscapes characteristic of Gonzaga.",
+spots: "Rural landscapes",
+image: "https://images.unsplash.com/photo-1511497584788-876760111969?auto=format&fit=crop&w=1000&q=80"
+},
+
+{
+name: "Baua",
+population: "Add official population",
+description: "A Gonzaga community where agriculture and family life remain important.",
+spots: "Local farms",
+image: "https://images.unsplash.com/photo-1500382017468-9049fed747ef?auto=format&fit=crop&w=1000&q=80"
+},
+
+{
+name: "Cabanbanan Norte",
+population: "Add official population",
+description: "One of the central barangays of Gonzaga.",
+spots: "Municipal and community areas",
+image: "https://images.unsplash.com/photo-1449157291145-7efd050a4d0e?auto=format&fit=crop&w=1000&q=80"
+},
+
+{
+name: "Cabanbanan Sur",
+population: "Add official population",
+description: "A central community close to important local services and establishments.",
+spots: "Town center",
+image: "https://images.unsplash.com/photo-1497366754035-f200968a6e72?auto=format&fit=crop&w=1000&q=80"
+},
+
+{
+name: "Cabiraoan",
+population: "Add official population",
+description: "A community connected to the wider coastal and rural landscape of Gonzaga.",
+spots: "Coastal and countryside views",
+image: "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=1000&q=80"
+},
+
+{
+name: "Calayan",
+population: "Add official population",
+description: "A local community contributing to the agricultural and cultural life of Gonzaga.",
+spots: "Farms and natural scenery",
+image: "https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=1000&q=80"
+},
+
+{
+name: "Callao",
+population: "Add official population",
+description: "A peaceful Gonzaga community surrounded by natural and agricultural scenery.",
+spots: "Countryside",
+image: "https://images.unsplash.com/photo-1441974231531-c6227db76b6e?auto=format&fit=crop&w=1000&q=80"
+},
+
+{
+name: "Caroan",
+population: "Add official population",
+description: "A peaceful community forming part of Gonzaga's diverse barangay network.",
+spots: "Countryside scenery",
+image: "https://images.unsplash.com/photo-1473448912268-2022ce9509d8?auto=format&fit=crop&w=1000&q=80"
+},
+
+{
+name: "Casitan",
+population: "Add official population",
+description: "A community known for its rural character and connection to agriculture.",
+spots: "Agricultural areas",
+image: "https://images.unsplash.com/photo-1500937386664-56d1dfef3854?auto=format&fit=crop&w=1000&q=80"
+},
+
+{
+name: "Flourishing",
+population: "Add official population",
+description: "A rural community where residents are connected with agriculture and local livelihoods.",
+spots: "Farms and countryside",
+image: "https://images.unsplash.com/photo-1500534623283-312aade485b7?auto=format&fit=crop&w=1000&q=80"
+},
+
+{
+name: "Ipil",
+population: "Add official population",
+description: "A rural barangay surrounded by greenery and agricultural landscapes.",
+spots: "Farms and greenery",
+image: "https://images.unsplash.com/photo-1448375240586-882707db888b?auto=format&fit=crop&w=1000&q=80"
+},
+
+{
+name: "Isca",
+population: "Add official population",
+description: "A community with a strong rural identity and connection to Gonzaga's landscape.",
+spots: "Local countryside",
+image: "https://images.unsplash.com/photo-1500534314209-a25ddb2bd429?auto=format&fit=crop&w=1000&q=80"
+},
+
+{
+name: "Magrafil",
+population: "Add official population",
+description: "A northern community surrounded by agricultural landscapes.",
+spots: "Farms and local roads",
+image: "https://images.unsplash.com/photo-1464226184884-fa280b87c399?auto=format&fit=crop&w=1000&q=80"
+},
+
+{
+name: "Minanga",
+population: "Add official population",
+description: "A Gonzaga barangay contributing to the municipality's agricultural communities.",
+spots: "Agricultural scenery",
+image: "https://images.unsplash.com/photo-1464226184884-fa280b87c399?auto=format&fit=crop&w=1000&q=80"
+},
+
+{
+name: "Paradise",
+population: "Add official population",
+description: "A Gonzaga barangay with a peaceful rural atmosphere and community-centered way of life.",
+spots: "Countryside landscapes",
+image: "https://images.unsplash.com/photo-1470770841072-f978cf4d019e?auto=format&fit=crop&w=1000&q=80"
+},
+
+{
+name: "Pateng",
+population: "Add official population",
+description: "A community surrounded by the natural environment of northeastern Cagayan.",
+spots: "Natural scenery",
+image: "https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?auto=format&fit=crop&w=1000&q=80"
+},
+
+{
+name: "Progressive",
+population: "Add official population",
+description: "A Gonzaga community reflecting the continuing development of the municipality.",
+spots: "Community areas",
+image: "https://images.unsplash.com/photo-1449157291145-7efd050a4d0e?auto=format&fit=crop&w=1000&q=80"
+},
+
+{
+name: "Rebecca",
+population: "Add official population",
+description: "A local community with its own character, residents and surrounding landscapes.",
+spots: "Countryside",
+image: "https://images.unsplash.com/photo-1470770841072-f978cf4d019e?auto=format&fit=crop&w=1000&q=80"
+},
+
+{
+name: "San Jose",
+population: "Add official population",
+description: "A barangay forming part of the community life of Gonzaga.",
+spots: "Local community",
+image: "https://images.unsplash.com/photo-1497366754035-f200968a6e72?auto=format&fit=crop&w=1000&q=80"
+},
+
+{
+name: "Santa Clara",
+population: "Add official population",
+description: "A Gonzaga community where local families and livelihoods shape everyday life.",
+spots: "Rural landscapes",
+image: "https://images.unsplash.com/photo-1500534623283-312aade485b7?auto=format&fit=crop&w=1000&q=80"
+},
+
+{
+name: "Santa Cruz",
+population: "Add official population",
+description: "A peaceful community surrounded by the natural landscape of Gonzaga.",
+spots: "Countryside",
+image: "https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=1000&q=80"
+},
+
+{
+name: "Santa Maria",
+population: "Add official population",
+description: "A local barangay contributing to Gonzaga's agricultural and community life.",
+spots: "Farms and greenery",
+image: "https://images.unsplash.com/photo-1500382017468-9049fed747ef?auto=format&fit=crop&w=1000&q=80"
+},
+
+{
+name: "Smart",
+population: "Add official population",
+description: "A barangay with a rural atmosphere and landscapes characteristic of Gonzaga.",
+spots: "Rural landscapes",
+image: "https://images.unsplash.com/photo-1511497584788-876760111969?auto=format&fit=crop&w=1000&q=80"
+},
+
+{
+name: "Tapel",
+population: "Add official population",
+description: "A barangay surrounded by the natural beauty of Gonzaga.",
+spots: "Natural landscapes",
+image: "https://images.unsplash.com/photo-1441974231531-c6227db76b6e?auto=format&fit=crop&w=1000&q=80"
+},
+
+];
+
+
+/* =====================================================
+   GENERATE BARANGAY CARDS
+===================================================== */
+
+const barangayGrid =
+document.getElementById("barangayGrid");
+
+barangays.forEach((barangay, index) => {
+
+const card = document.createElement("div");
+
+card.className = "barangay-card";
+
+card.innerHTML = `
+
+<div class="barangay-number">
+BARANGAY ${String(index + 1).padStart(2,"0")}
+</div>
+
+<h3>${barangay.name}</h3>
+
+`;
+
+card.onclick = () => {
+
+openBarangay(barangay);
+
+};
+
+barangayGrid.appendChild(card);
+
+});
+
+
+/* =====================================================
+   OPEN BARANGAY
+===================================================== */
+
+function openBarangay(barangay) {
+
+document.getElementById("modalTitle").textContent =
+barangay.name;
+
+document.getElementById("modalImage").src =
+barangay.image;
+
+document.getElementById("modalImage").alt =
+barangay.name + ", Gonzaga, Cagayan";
+
+document.getElementById("modalDescription").textContent =
+barangay.description;
+
+document.getElementById("modalFacts").innerHTML = `
+
+<div class="modal-fact">
+<strong>${barangay.population}</strong>
+Population
+</div>
+
+<div class="modal-fact">
+<strong>Gonzaga</strong>
+Municipality
+</div>
+
+<div class="modal-fact">
+<strong>${barangay.spots}</strong>
+Notable area
+</div>
+
+`;
+
+document.getElementById("modal").classList.add("active");
+
+}
+
+
+/* =====================================================
+   TOURIST SPOTS
+===================================================== */
+
+const spots = [
+
+{
+title: "Mt. Cagua",
+category: "VOLCANO • ADVENTURE",
+image: "https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?auto=format&fit=crop&w=1200&q=85",
+description: "Mt. Cagua is one of the most recognizable natural landmarks associated with Gonzaga. Its volcanic landscape and surrounding environment make it an exciting destination for outdoor enthusiasts."
+},
+
+{
+title: "Gonzaga Coastline",
+category: "SEA • COAST",
+image: "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=1200&q=85",
+description: "Gonzaga's coastal environment faces the waters of northeastern Cagayan, providing scenic views and supporting fishing communities."
+},
+
+{
+title: "Forests & Trails",
+category: "WILD • TREKKING",
+image: "https://images.unsplash.com/photo-1448375240586-882707db888b?auto=format&fit=crop&w=1200&q=85",
+description: "The forested areas around Gonzaga offer opportunities for hiking, nature appreciation, photography and outdoor exploration."
+},
+
+{
+title: "Waterfalls",
+category: "WATER • ADVENTURE",
+image: "https://images.unsplash.com/photo-1432405972618-c60b0225b8f9?auto=format&fit=crop&w=1200&q=85",
+description: "Waterfalls and streams are part of Gonzaga's natural landscape. Always check local guidance and conditions before visiting remote areas."
+},
+
+{
+title: "Agricultural Landscapes",
+category: "FARMS • COUNTRYSIDE",
+image: "https://images.unsplash.com/photo-1500382017468-9049fed747ef?auto=format&fit=crop&w=1200&q=85",
+description: "Rice fields, coconut trees and rural landscapes show another side of Gonzaga — the everyday environment where agriculture remains important."
+},
+
+{
+title: "Mountain Views",
+category: "MOUNTAIN • NATURE",
+image: "https://images.unsplash.com/photo-1500534623283-312aade485b7?auto=format&fit=crop&w=1200&q=85",
+description: "The mountains surrounding Gonzaga create dramatic views and provide a backdrop for outdoor adventures."
+}
+
+];
+
+const spotGrid =
+document.getElementById("spotGrid");
+
+spots.forEach(spot => {
+
+const card = document.createElement("article");
+
+card.className = "spot-card";
+
+card.innerHTML = `
+
+<div class="spot-image">
+
+<img
+src="${spot.image}"
+alt="${spot.title}"
+loading="lazy"
+>
+
+</div>
+
+<div class="spot-content">
+
+<small>${spot.category}</small>
+
+<h3>${spot.title}</h3>
+
+<p>
+Click to explore this destination.
+</p>
+
+</div>
+
+`;
+
+card.onclick = () => {
+
+openModal(
+spot.title,
+spot.image,
+spot.description
+);
+
+};
+
+spotGrid.appendChild(card);
+
+});
+
+
+/* =====================================================
+   MODAL
+===================================================== */
+
+function openModal(title, image, description) {
+
+document.getElementById("modalTitle")
+.textContent = title;
+
+document.getElementById("modalImage")
+.src = image;
+
+document.getElementById("modalDescription")
+.textContent = description;
+
+document.getElementById("modalFacts")
+.innerHTML = "";
+
+document.getElementById("modal")
+.classList.add("active");
+
+}
+
+
+function closeModal() {
+
+document.getElementById("modal")
+.classList.remove("active");
+
+}
+
+
+/* Close when clicking outside */
+
+document.getElementById("modal")
+.addEventListener("click", function(e) {
+
+if(e.target === this) {
+
+closeModal();
+
+}
+
+});
+
+
+/* Close with ESC */
+
+document.addEventListener("keydown", function(e) {
+
+if(e.key === "Escape") {
+
+closeModal();
+
+}
+
+});
+
+
+/* =====================================================
+   MOBILE MENU
+===================================================== */
+
+const menuBtn =
+document.getElementById("menuBtn");
+
+const navLinks =
+document.getElementById("navLinks");
+
+menuBtn.addEventListener("click", () => {
+
+navLinks.classList.toggle("active");
+
+});
+
+
+document.querySelectorAll(".nav-links a")
+.forEach(link => {
+
+link.addEventListener("click", () => {
+
+navLinks.classList.remove("active");
+
+});
+
+});
+
+
+/* =====================================================
+   YEAR
+===================================================== */
+
+document.getElementById("year")
+.textContent = new Date().getFullYear();
+
+
+/* =====================================================
+   ENHANCED ANIMATIONS
+===================================================== */
+
+const scrollProgress = document.getElementById("scrollProgress");
+const backTop = document.getElementById("backTop");
+const header = document.querySelector("header");
+
+function updateScrollEffects() {
+    const scrollTop = window.scrollY;
+    const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+    const progress = docHeight > 0 ? (scrollTop / docHeight) * 100 : 0;
+
+    scrollProgress.style.width = progress + "%";
+
+    if (scrollTop > 350) {
+        backTop.classList.add("show");
+        header.classList.add("scrolled");
+    } else {
+        backTop.classList.remove("show");
+        header.classList.remove("scrolled");
+    }
+}
+
+window.addEventListener("scroll", updateScrollEffects, { passive: true });
+updateScrollEffects();
+
+backTop.addEventListener("click", () => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+});
+
+/* Reveal elements as they enter the viewport */
+const revealObserver = new IntersectionObserver((entries, observer) => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            entry.target.classList.add("visible");
+            observer.unobserve(entry.target);
+        }
+    });
+}, { threshold: 0.12 });
+
+document.querySelectorAll(".reveal").forEach(el => revealObserver.observe(el));
+
+/* Stagger dynamically generated barangay and destination cards */
+const cardObserver = new MutationObserver(() => {
+    document.querySelectorAll(
+        ".barangay-card:not(.reveal), .spot-card:not(.reveal)"
+    ).forEach((card, index) => {
+        card.classList.add("reveal");
+        card.style.transitionDelay = Math.min(index * 45, 450) + "ms";
+        revealObserver.observe(card);
+    });
+});
+
+cardObserver.observe(document.body, { childList: true, subtree: true });
+
+</script>
+
+
+</body></html>
