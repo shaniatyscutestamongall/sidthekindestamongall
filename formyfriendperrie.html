@@ -1,0 +1,1110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>A Little Classroom of Us 🍎</title>
+
+<style>
+/* =========================================================
+   TEACHER THEME — CLASSROOM / CHALKBOARD
+========================================================= */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: "Trebuchet MS", Arial, sans-serif;
+    background: #f7f1df;
+    color: #3f372d;
+    overflow-x: hidden;
+}
+
+/* Theme colors */
+:root {
+    --chalkboard: #183f35;
+    --chalkboard-dark: #102f28;
+    --chalk: #fff9df;
+    --wood: #8b5e3c;
+    --wood-dark: #63402a;
+    --paper: #fffdf5;
+    --paper-yellow: #fff2a8;
+    --paper-blue: #dcecf2;
+    --paper-pink: #f7dfe3;
+    --ink: #3f372d;
+    --gold: #d6a84f;
+    --red: #c95c58;
+    --green: #5e9678;
+}
+
+/* =========================================================
+   CLASSROOM BACKGROUND
+========================================================= */
+
+.background {
+    position: fixed;
+    inset: 0;
+    overflow: hidden;
+    pointer-events: none;
+    z-index: -1;
+    background:
+        linear-gradient(rgba(139,94,60,.06) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(139,94,60,.06) 1px, transparent 1px),
+        #f7f1df;
+    background-size: 35px 35px;
+}
+
+.blob {
+    position: absolute;
+    border-radius: 50%;
+    opacity: .35;
+    filter: blur(5px);
+    animation: float 8s ease-in-out infinite;
+}
+
+.blob.one {
+    width: 230px;
+    height: 230px;
+    background: #dcecf2;
+    top: 7%;
+    left: -80px;
+}
+
+.blob.two {
+    width: 210px;
+    height: 210px;
+    background: #f7dfe3;
+    right: -70px;
+    top: 40%;
+    animation-delay: 2s;
+}
+
+.blob.three {
+    width: 180px;
+    height: 180px;
+    background: #fff2a8;
+    left: 35%;
+    bottom: -80px;
+    animation-delay: 4s;
+}
+
+@keyframes float {
+    0%,100% { transform: translateY(0) rotate(0deg); }
+    50% { transform: translateY(-22px) rotate(5deg); }
+}
+
+/* =========================================================
+   NAVIGATION — CHALKBOARD STYLE
+========================================================= */
+
+nav {
+    position: fixed;
+    top: 15px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: min(94%, 900px);
+    background: rgba(24,63,53,.94);
+    border: 4px solid var(--wood);
+    border-radius: 12px;
+    padding: 9px 16px;
+    display: flex;
+    justify-content: center;
+    gap: 24px;
+    z-index: 1000;
+    box-shadow: 0 8px 0 rgba(99,64,42,.25), 0 15px 30px rgba(63,55,45,.15);
+}
+
+nav a {
+    color: var(--chalk);
+    text-decoration: none;
+    font-size: .88rem;
+    transition: .25s;
+}
+
+nav a:hover {
+    color: var(--paper-yellow);
+    transform: translateY(-2px);
+}
+
+/* =========================================================
+   GENERAL
+========================================================= */
+
+section {
+    min-height: 100vh;
+    padding: 115px 7% 70px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.section-title {
+    text-align: center;
+    margin-bottom: 42px;
+}
+
+.section-title span {
+    color: var(--wood);
+    font-size: .8rem;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    font-weight: bold;
+}
+
+.section-title h2 {
+    font-size: clamp(2rem, 5vw, 3.2rem);
+    margin-top: 8px;
+    color: var(--chalkboard-dark);
+}
+
+/* =========================================================
+   HERO — CHALKBOARD
+========================================================= */
+
+.hero {
+    text-align: center;
+    position: relative;
+}
+
+.hero::before {
+    content: "✦  ★  ✎  ★  ✦";
+    display: block;
+    color: var(--gold);
+    font-size: 1.3rem;
+    letter-spacing: 10px;
+    margin-bottom: 22px;
+}
+
+.hero .small-text {
+    font-size: 1rem;
+    color: var(--wood);
+    margin-bottom: 15px;
+    font-weight: bold;
+}
+
+.hero h1 {
+    font-family: Georgia, serif;
+    font-size: clamp(3rem, 10vw, 7rem);
+    line-height: .95;
+    color: var(--chalkboard);
+    letter-spacing: -3px;
+}
+
+.hero h1 span {
+    color: var(--red);
+}
+
+.hero p {
+    max-width: 620px;
+    margin: 25px auto;
+    line-height: 1.8;
+    color: #6d5e4e;
+}
+
+.primary-btn {
+    border: 3px solid var(--wood-dark);
+    background: var(--chalkboard);
+    color: var(--chalk);
+    padding: 14px 27px;
+    border-radius: 8px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: .25s;
+    box-shadow: 0 5px 0 var(--wood-dark);
+    font-weight: bold;
+}
+
+.primary-btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 0 var(--wood-dark);
+}
+
+.primary-btn:active {
+    transform: translateY(2px);
+    box-shadow: 0 2px 0 var(--wood-dark);
+}
+
+/* =========================================================
+   SECRET MESSAGE — NOTEBOOK PAPER
+========================================================= */
+
+.secret-message {
+    max-width: 680px;
+    margin-top: 30px;
+    padding: 0 20px;
+    max-height: 0;
+    overflow: hidden;
+    opacity: 0;
+    transition: 1s ease;
+}
+
+.secret-message.show {
+    max-height: 320px;
+    opacity: 1;
+}
+
+.secret-message p {
+    background:
+        linear-gradient(#fffdf5 29px, #cbdde4 30px);
+    background-size: 100% 30px;
+    padding: 25px 30px 25px 45px;
+    border-left: 5px solid var(--red);
+    border-radius: 4px;
+    box-shadow: 4px 6px 0 rgba(139,94,60,.15);
+    line-height: 30px;
+    position: relative;
+}
+
+.secret-message p::before {
+    content: "📌";
+    position: absolute;
+    top: -18px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 24px;
+}
+
+/* =========================================================
+   FRIENDSHIP — TEACHER'S DESK / CLASSROOM
+========================================================= */
+
+.friendship {
+    background: #efe6d2;
+    position: relative;
+}
+
+.friendship::after {
+    content: "📚   ✏️   🍎   📐   📓";
+    position: absolute;
+    bottom: 25px;
+    opacity: .65;
+    font-size: 1.4rem;
+    letter-spacing: 8px;
+}
+
+.friendship-card {
+    max-width: 850px;
+    background: var(--paper);
+    padding: clamp(28px, 5vw, 55px);
+    border-radius: 5px;
+    border: 1px solid #d9cdb8;
+    box-shadow: 8px 10px 0 rgba(99,64,42,.12), 0 20px 45px rgba(63,55,45,.1);
+    text-align: center;
+    position: relative;
+    transform: rotate(-.5deg);
+}
+
+.friendship-card::before {
+    content: "★";
+    position: absolute;
+    font-size: 30px;
+    color: var(--red);
+    top: 12px;
+    right: 20px;
+}
+
+.friendship-card::after {
+    content: "LESSON: FRIENDSHIP";
+    position: absolute;
+    top: 18px;
+    left: 22px;
+    font-size: .65rem;
+    color: #9a8975;
+    letter-spacing: 2px;
+}
+
+.friendship-card p {
+    font-size: 1.12rem;
+    line-height: 2;
+    margin-top: 18px;
+}
+
+/* =========================================================
+   MEMORY CARDS — SCHOOL NOTEBOOKS
+========================================================= */
+
+.memories-grid {
+    width: min(100%, 1000px);
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 28px;
+}
+
+.memory {
+    background: var(--paper);
+    padding: 15px;
+    border-radius: 4px;
+    border: 1px solid #d7c9b2;
+    box-shadow: 5px 7px 0 rgba(99,64,42,.12);
+    transform: rotate(var(--rotation));
+    transition: .35s;
+    cursor: pointer;
+    position: relative;
+}
+
+.memory::before {
+    content: "";
+    position: absolute;
+    width: 60px;
+    height: 17px;
+    top: -8px;
+    left: 50%;
+    transform: translateX(-50%) rotate(-2deg);
+    background: rgba(255,242,168,.75);
+}
+
+.memory:hover {
+    transform: rotate(0deg) translateY(-10px) scale(1.03);
+    box-shadow: 8px 12px 0 rgba(99,64,42,.15);
+}
+
+.photo {
+    height: 210px;
+    border-radius: 2px;
+    background:
+        linear-gradient(135deg, #dcecf2, #f7dfe3);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 3rem;
+    margin-bottom: 15px;
+    border: 2px dashed #a99783;
+}
+
+.memory h3 {
+    color: var(--chalkboard);
+    margin-bottom: 8px;
+}
+
+.memory p {
+    color: #817362;
+    font-size: .9rem;
+    line-height: 1.6;
+}
+
+/* =========================================================
+   STATS — REPORT CARD
+========================================================= */
+
+.stats-section {
+    background: var(--chalkboard);
+    color: var(--chalk);
+}
+
+.stats-section .section-title span {
+    color: var(--paper-yellow);
+}
+
+.stats-section .section-title h2 {
+    color: var(--chalk);
+}
+
+.stats {
+    width: min(100%, 900px);
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+}
+
+.stat {
+    background: var(--paper);
+    color: var(--ink);
+    padding: 28px 15px;
+    text-align: center;
+    border-radius: 5px;
+    border-top: 7px solid var(--red);
+    box-shadow: 5px 7px 0 rgba(0,0,0,.2);
+    transition: .3s;
+}
+
+.stat:nth-child(2) { border-top-color: var(--gold); }
+.stat:nth-child(3) { border-top-color: var(--green); }
+.stat:nth-child(4) { border-top-color: #668eb3; }
+
+.stat:hover {
+    transform: translateY(-7px) rotate(-1deg);
+}
+
+.stat .number {
+    font-size: 2.5rem;
+    color: var(--chalkboard);
+    font-weight: bold;
+}
+
+.stat p {
+    margin-top: 8px;
+    color: #817362;
+    font-size: .85rem;
+}
+
+/* =========================================================
+   QUIZ — POP QUIZ
+========================================================= */
+
+.quiz-box {
+    width: min(100%, 650px);
+    background: var(--paper);
+    padding: 35px;
+    border-radius: 5px;
+    border: 1px solid #d7c9b2;
+    box-shadow: 8px 10px 0 rgba(99,64,42,.13);
+    text-align: center;
+    position: relative;
+}
+
+.quiz-box::before {
+    content: "POP QUIZ!";
+    position: absolute;
+    top: -16px;
+    left: 25px;
+    background: var(--red);
+    color: white;
+    padding: 7px 13px;
+    transform: rotate(-3deg);
+    font-weight: bold;
+    font-size: .8rem;
+    box-shadow: 3px 4px 0 rgba(99,64,42,.2);
+}
+
+.quiz-question {
+    font-size: 1.3rem;
+    margin-bottom: 25px;
+    color: var(--chalkboard);
+    line-height: 1.5;
+}
+
+.answers {
+    display: grid;
+    gap: 12px;
+}
+
+.answer {
+    padding: 14px;
+    border: 2px solid #d9cdb8;
+    background: #fffaf0;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: .25s;
+}
+
+.answer:hover {
+    background: var(--paper-yellow);
+    transform: translateX(5px);
+}
+
+.answer.correct {
+    background: #dcefe2;
+    border-color: var(--green);
+}
+
+.answer.wrong {
+    background: #f7dfe3;
+    border-color: var(--red);
+}
+
+.quiz-result {
+    margin-top: 20px;
+    font-weight: bold;
+    color: var(--chalkboard);
+}
+
+/* =========================================================
+   SURPRISE — LETTER FROM THE TEACHER'S DESK
+========================================================= */
+
+.surprise-section {
+    background:
+        linear-gradient(rgba(255,255,255,.4), rgba(255,255,255,.4)),
+        #f1e7d2;
+    text-align: center;
+}
+
+.surprise-section h2 {
+    font-family: Georgia, serif;
+    font-size: clamp(2rem, 7vw, 4rem);
+    color: var(--chalkboard);
+}
+
+.surprise-section p {
+    margin: 20px auto 30px;
+    max-width: 550px;
+    line-height: 1.8;
+}
+
+.letter {
+    display: none;
+    max-width: 700px;
+    background:
+        linear-gradient(#fffdf5 31px, #d9e5e7 32px);
+    background-size: 100% 32px;
+    padding: clamp(35px, 6vw, 60px);
+    margin-top: 30px;
+    border-radius: 4px;
+    border: 1px solid #d4c5ad;
+    box-shadow: 8px 10px 0 rgba(99,64,42,.13);
+    text-align: left;
+    animation: letterOpen .8s ease;
+    position: relative;
+}
+
+.letter::before {
+    content: "CONFIDENTIAL: FRIENDSHIP RECORD";
+    position: absolute;
+    top: 13px;
+    right: 15px;
+    color: #a99883;
+    font-size: .55rem;
+    letter-spacing: 1px;
+}
+
+.letter.show {
+    display: block;
+}
+
+.letter h3 {
+    color: var(--chalkboard);
+    font-family: Georgia, serif;
+    font-size: 1.8rem;
+    margin-bottom: 20px;
+}
+
+.letter p {
+    line-height: 32px;
+    color: #62584b;
+}
+
+.signature {
+    margin-top: 25px;
+    text-align: right;
+    color: var(--red);
+    font-weight: bold;
+}
+
+@keyframes letterOpen {
+    from {
+        opacity: 0;
+        transform: scale(.85) rotate(2deg) translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1) rotate(0) translateY(0);
+    }
+}
+
+/* =========================================================
+   FOOTER — CLASSROOM BOARD
+========================================================= */
+
+footer {
+    padding: 30px;
+    text-align: center;
+    background: var(--wood-dark);
+    color: var(--chalk);
+    font-size: .85rem;
+}
+
+/* =========================================================
+   FLOATING SCHOOL EMOJIS
+========================================================= */
+
+.heart {
+    position: fixed;
+    pointer-events: none;
+    font-size: 20px;
+    animation: heartFloat 3s linear forwards;
+    z-index: 2000;
+}
+
+@keyframes heartFloat {
+    0% {
+        opacity: 1;
+        transform: translateY(0) scale(1) rotate(0);
+    }
+    100% {
+        opacity: 0;
+        transform: translateY(-200px) scale(1.5) rotate(20deg);
+    }
+}
+
+/* =========================================================
+   RESPONSIVE
+========================================================= */
+
+@media (max-width: 800px) {
+
+    nav {
+        gap: 12px;
+        padding: 9px 12px;
+    }
+
+    nav a {
+        font-size: .75rem;
+    }
+
+    .memories-grid {
+        grid-template-columns: 1fr;
+        max-width: 400px;
+    }
+
+    .memory {
+        transform: none !important;
+    }
+
+    .stats {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 500px) {
+
+    nav {
+        width: 94%;
+        overflow-x: auto;
+        justify-content: flex-start;
+        white-space: nowrap;
+    }
+
+    nav::-webkit-scrollbar {
+        display: none;
+    }
+
+    section {
+        padding-left: 5%;
+        padding-right: 5%;
+    }
+
+    .hero h1 {
+        letter-spacing: -2px;
+    }
+
+    .friendship-card p {
+        font-size: 1rem;
+    }
+
+    .stats {
+        gap: 12px;
+    }
+
+    .stat {
+        padding: 22px 10px;
+    }
+
+    .stat .number {
+        font-size: 2rem;
+    }
+
+    .quiz-box {
+        padding: 30px 18px;
+    }
+
+    .letter {
+        padding: 40px 22px 30px;
+    }
+
+    .letter::before {
+        display: none;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<!-- =====================================================
+     BACKGROUND
+===================================================== -->
+
+<div class="background">
+    <div class="blob one"></div>
+    <div class="blob two"></div>
+    <div class="blob three"></div>
+</div>
+
+<!-- =====================================================
+     NAVIGATION
+===================================================== -->
+
+<nav>
+    <a href="#home">Home</a>
+    <a href="#friendship">Us</a>
+    <a href="#memories">Memories</a>
+    <a href="#stats">Stats</a>
+    <a href="#quiz">Quiz</a>
+    <a href="#surprise">📝</a>
+</nav>
+
+<!-- =====================================================
+     HERO
+===================================================== -->
+
+<section class="hero" id="home">
+
+    <div class="small-text">
+        Welcome to our Shan's Effort Classroom! 🍎
+    </div>
+
+    <h1>
+        Hi,<br>
+        <span>Gov.</span>
+    </h1>
+
+    <p>
+        I made this little classroom on the internet
+        because sometimes a simple "thank you"
+        doesn't feel like enough.
+    </p>
+
+    <button class="primary-btn" onclick="revealMessage()">
+        Do not open this yet 👀
+    </button>
+
+    <div class="secret-message" id="secretMessage">
+        <p>
+            Okay, you clicked it. 😭<br><br>
+
+            I just wanted to remind you that I'm really
+            grateful you're here. Even the busiest school days
+            feel a little lighter with the right person around.
+            Thank you for all the laughs, lessons, chaos, and memories.
+        </p>
+    </div>
+
+</section>
+
+<!-- =====================================================
+     FRIENDSHIP
+===================================================== -->
+
+<section class="friendship" id="friendship">
+
+    <div class="section-title">
+        <span>lesson one</span>
+        <h2>How we became friends</h2>
+    </div>
+
+    <div class="friendship-card">
+
+        <p>
+            Somewhere between the random conversations,
+            ridiculous jokes, unexpected moments, and
+            those "remember when..." stories,
+            you became someone I genuinely appreciate.
+            <br><br>
+
+            Maybe our friendship isn't perfect.
+            Maybe we're both slightly chaotic.
+            But that's kind of what makes it ours.
+            <br><br>
+
+            And honestly?
+
+            I'm glad it happened.
+        </p>
+
+    </div>
+
+</section>
+
+
+
+<!-- =====================================================
+     STATS
+===================================================== -->
+
+<section class="stats-section" id="stats">
+
+    <div class="section-title">
+        <span>scientifically accurate</span>
+        <h2>Our friendship report card 📋</h2>
+    </div>
+
+    <div class="stats">
+
+        <div class="stat">
+            <div class="number">∞</div>
+            <p>Random conversations</p>
+        </div>
+
+        <div class="stat">
+            <div class="number">4,827</div>
+            <p>"HAHAHAHA" moments</p>
+        </div>
+
+        <div class="stat">
+            <div class="number">34</div>
+            <p>Normal conversations</p>
+        </div>
+
+        <div class="stat">
+            <div class="number">100%</div>
+            <p>Memories worth keeping</p>
+        </div>
+<div class="stat">
+    <div class="number">387</div>
+    <p>TOMA!!!</p>
+</div>
+<div class="stat">
+    <div class="number">208</div>
+    <p>mailiwak, gov</p>
+</div>
+<div class="stat">
+    <div class="number">159</div>
+    <p>hanen!hanen!hanen!</p>
+    </div>
+
+    <div class="stat">
+    <div class="number">564</div>
+    <p>nagpelo oh!</p>
+
+</section>
+
+<!-- =====================================================
+     QUIZ
+===================================================== -->
+
+<section id="quiz">
+
+    <div class="section-title">
+        <span>very serious examination</span>
+        <h2>Pop Quiz 📝</h2>
+    </div>
+
+    <div class="quiz-box">
+
+        <div class="quiz-question" id="question">
+            What happens when we say "Umay nak/ka man dita/ditoy, Gov?"
+        </div>
+
+        <div class="answers">
+
+            <div class="answer" onclick="answerQuestion(this, false)">
+                 tinnupra
+            </div>
+
+            <div class="answer" onclick="answerQuestion(this, true)">
+                agsinnangit
+            </div>
+
+            <div class="answer" onclick="answerQuestion(this, false)">
+                maturog
+            </div>
+
+        </div>
+
+        <div class="quiz-result" id="quizResult"></div>
+
+    </div>
+
+</section>
+
+<!-- =====================================================
+     SURPRISE
+===================================================== -->
+
+<section class="surprise-section" id="surprise">
+
+    <div class="section-title">
+        <span>okay, seriously now</span>
+        <h2>One last note...</h2>
+    </div>
+
+    <p>
+        There's actually something I wanted to say.
+    </p>
+
+    <button class="primary-btn" onclick="openLetter()">
+        Open the note 📝
+    </button>
+
+    <div class="letter" id="letter">
+
+        <h3>Gov,</h3>
+
+        <p>
+            I don't always say it, but I really appreciate
+            having you in my life.
+            <br><br>
+
+            Thank you for the laughs, the random moments,
+            the conversations, the memories, and even the
+            completely unnecessary chaos.
+            <br><br>
+
+            Thank you for being someone I can share
+            both the dumbest thoughts and the meaningful
+            ones with.
+            <br><br>
+
+            I don't know what the future looks like,
+            but I hope there are still a lot of stories
+            left for us to create.
+            <br><br>
+
+            So here's a little reminder:
+
+            you're appreciated,
+            you're important,
+            and I'm really glad our friendship exists.
+        </p>
+
+        <div class="signature">
+            — from your one and only Gov 🍎
+        </div>
+
+    </div>
+
+</section>
+
+<!-- =====================================================
+     FOOTER
+===================================================== -->
+
+<footer>
+    Made with a little coding, a little chalk dust, and a lot of appreciation. 🍎
+</footer>
+
+<!-- =====================================================
+     JAVASCRIPT
+===================================================== -->
+
+<script>
+
+/* =========================================================
+   SECRET MESSAGE
+========================================================= */
+
+function revealMessage() {
+
+    const message = document.getElementById("secretMessage");
+
+    message.classList.toggle("show");
+
+    createHearts(8);
+}
+
+
+/* =========================================================
+   QUIZ
+========================================================= */
+
+function answerQuestion(element, correct) {
+
+    const result = document.getElementById("quizResult");
+
+    // Prevent multiple clicks
+    const answers = document.querySelectorAll(".answer");
+
+    answers.forEach(answer => {
+        answer.style.pointerEvents = "none";
+    });
+
+    if (correct) {
+
+        element.classList.add("correct");
+
+        result.textContent =
+            "Correct. You know us too well. 😂";
+
+        createHearts(5);
+
+    } else {
+
+        element.classList.add("wrong");
+
+        result.textContent =
+            "Wrong. Please reconsider our friendship. 😭";
+    }
+}
+
+
+/* =========================================================
+   LETTER
+========================================================= */
+
+function openLetter() {
+
+    const letter = document.getElementById("letter");
+
+    letter.classList.add("show");
+
+    createHearts(15);
+
+    setTimeout(() => {
+
+        letter.scrollIntoView({
+            behavior: "smooth",
+            block: "center"
+        });
+
+    }, 300);
+}
+
+
+/* =========================================================
+   FLOATING HEARTS
+========================================================= */
+
+function createHearts(amount) {
+
+    for (let i = 0; i < amount; i++) {
+
+        const heart = document.createElement("div");
+
+        heart.className = "heart";
+
+        const hearts = ["🍎", "✏️", "📚", "⭐", "📝"];
+
+        heart.textContent =
+            hearts[Math.floor(Math.random() * hearts.length)];
+
+        heart.style.left =
+            Math.random() * 100 + "vw";
+
+        heart.style.top =
+            (50 + Math.random() * 30) + "vh";
+
+        heart.style.animationDuration =
+            (2 + Math.random() * 2) + "s";
+
+        document.body.appendChild(heart);
+
+        setTimeout(() => {
+            heart.remove();
+        }, 4000);
+    }
+}
+
+
+/* =========================================================
+   RANDOM MINI SURPRISE
+========================================================= */
+
+document.addEventListener("click", function(event) {
+
+    if (
+        event.target.tagName === "BUTTON" ||
+        event.target.classList.contains("answer")
+    ) {
+        return;
+    }
+
+    // Small chance of a heart appearing
+    if (Math.random() < 0.08) {
+        createHearts(1);
+    }
+
+});
+
+</script>
+
+</body>
+</html>
