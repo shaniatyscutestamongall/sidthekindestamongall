@@ -1,0 +1,4046 @@
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>QueueLess - Queue Management System</title>
+
+<style>
+    :root {
+        --bg: #11131a;
+        --card: #1b1e27;
+        --card2: #242832;
+
+        --violet: #8057c7;
+        --violet-light: #a980ee;
+
+        --olive: #8b9145;
+        --olive-light: #b2b867;
+
+        --white: #f5f5f7;
+        --gray: #a7acb8;
+
+        --danger: #d95c6a;
+        --success: #5fc681;
+
+        --border: #2c303b;
+    }
+
+    * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+    }
+
+    body {
+        font-family: Arial, Helvetica, sans-serif;
+        background: var(--bg);
+        color: var(--white);
+        min-height: 100vh;
+    }
+
+    button,
+    input,
+    select,
+    textarea {
+        font-family: inherit;
+    }
+
+    button {
+        cursor: pointer;
+    }
+
+    .hidden {
+        display: none !important;
+    }
+
+    /* =========================
+       AUTH PAGES
+    ========================= */
+
+    .auth-page {
+        min-height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 25px;
+        background:
+            radial-gradient(circle at top left, rgba(128, 87, 199, 0.18), transparent 35%),
+            radial-gradient(circle at bottom right, rgba(139, 145, 69, 0.15), transparent 35%),
+            var(--bg);
+    }
+
+    .auth-container {
+        width: 100%;
+        max-width: 460px;
+    }
+
+    .brand {
+        text-align: center;
+        margin-bottom: 25px;
+    }
+
+    .brand-icon {
+        width: 65px;
+        height: 65px;
+        margin: auto;
+        border-radius: 18px;
+        background: linear-gradient(135deg, var(--violet), var(--olive));
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 30px;
+        font-weight: bold;
+        box-shadow: 0 10px 30px rgba(128, 87, 199, 0.25);
+    }
+
+    .brand h1 {
+        margin-top: 12px;
+        font-size: 30px;
+    }
+
+    .brand p {
+        color: var(--gray);
+        margin-top: 5px;
+    }
+
+    .auth-card {
+        background: var(--card);
+        border: 1px solid var(--border);
+        border-radius: 18px;
+        padding: 30px;
+        box-shadow: 0 20px 50px rgba(0, 0, 0, 0.3);
+    }
+
+    .auth-card h2 {
+        margin-bottom: 8px;
+    }
+
+    .auth-card .subtitle {
+        color: var(--gray);
+        margin-bottom: 25px;
+        font-size: 14px;
+    }
+
+    .form-group {
+        margin-bottom: 17px;
+    }
+
+    .form-group label {
+        display: block;
+        margin-bottom: 7px;
+        font-size: 14px;
+        color: #ddd;
+    }
+
+    .input,
+    select,
+    textarea {
+        width: 100%;
+        background: var(--card2);
+        border: 1px solid var(--border);
+        color: var(--white);
+        border-radius: 10px;
+        padding: 12px 14px;
+        outline: none;
+        transition: 0.2s;
+    }
+
+    .input:focus,
+    select:focus,
+    textarea:focus {
+        border-color: var(--violet);
+        box-shadow: 0 0 0 3px rgba(128, 87, 199, 0.12);
+    }
+
+    textarea {
+        resize: vertical;
+        min-height: 90px;
+    }
+
+    .account-types {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 10px;
+        margin-bottom: 18px;
+    }
+
+    .account-option {
+        background: var(--card2);
+        border: 1px solid var(--border);
+        border-radius: 10px;
+        padding: 12px;
+        text-align: center;
+        cursor: pointer;
+        transition: 0.2s;
+    }
+
+    .account-option:hover {
+        border-color: var(--violet);
+    }
+
+    .account-option input {
+        margin-right: 5px;
+    }
+
+    .primary-btn {
+        width: 100%;
+        border: none;
+        border-radius: 10px;
+        padding: 13px;
+        background: linear-gradient(135deg, var(--violet), #6940ad);
+        color: white;
+        font-weight: bold;
+        font-size: 15px;
+        transition: 0.2s;
+    }
+
+    .primary-btn:hover {
+        transform: translateY(-1px);
+        opacity: 0.95;
+    }
+
+    .secondary-btn {
+        border: 1px solid var(--border);
+        background: var(--card2);
+        color: var(--white);
+        border-radius: 10px;
+        padding: 11px 16px;
+    }
+
+    .secondary-btn:hover {
+        border-color: var(--violet);
+    }
+
+    .auth-links {
+        margin-top: 18px;
+        text-align: center;
+        font-size: 14px;
+        color: var(--gray);
+    }
+
+    .auth-links a {
+        color: var(--violet-light);
+        cursor: pointer;
+        text-decoration: none;
+    }
+
+    .forgot-link {
+        display: block;
+        text-align: right;
+        margin-top: 8px;
+        color: var(--violet-light);
+        font-size: 13px;
+        cursor: pointer;
+    }
+
+    /* =========================
+       APP LAYOUT
+    ========================= */
+
+    .app {
+        min-height: 100vh;
+        display: flex;
+    }
+
+    .sidebar {
+        width: 250px;
+        background: #161820;
+        border-right: 1px solid var(--border);
+        padding: 22px 15px;
+        position: fixed;
+        left: 0;
+        top: 0;
+        bottom: 0;
+        z-index: 100;
+        transition: 0.3s;
+    }
+
+    .sidebar-brand {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        padding: 10px;
+        margin-bottom: 25px;
+    }
+
+    .sidebar-logo {
+        width: 40px;
+        height: 40px;
+        border-radius: 11px;
+        background: linear-gradient(135deg, var(--violet), var(--olive));
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-weight: bold;
+    }
+
+    .sidebar-brand h2 {
+        font-size: 19px;
+    }
+
+    .sidebar-brand span {
+        display: block;
+        color: var(--gray);
+        font-size: 11px;
+        margin-top: 2px;
+    }
+
+    .nav {
+        display: flex;
+        flex-direction: column;
+        height: calc(100% - 85px);
+    }
+
+    .nav-item {
+        border: none;
+        width: 100%;
+        text-align: left;
+        background: transparent;
+        color: var(--gray);
+        padding: 13px 14px;
+        border-radius: 10px;
+        margin-bottom: 5px;
+        font-size: 14px;
+        transition: 0.2s;
+    }
+
+    .nav-item:hover {
+        background: rgba(128, 87, 199, 0.1);
+        color: white;
+    }
+
+    .nav-item.active {
+        background: linear-gradient(
+            90deg,
+            rgba(128, 87, 199, 0.25),
+            rgba(139, 145, 69, 0.12)
+        );
+        color: white;
+        border-left: 3px solid var(--violet);
+    }
+
+    .logout-btn {
+        margin-top: auto;
+        color: #e38a94;
+    }
+
+    .main-content {
+        margin-left: 250px;
+        width: calc(100% - 250px);
+        padding: 25px;
+        min-height: 100vh;
+    }
+
+    .topbar {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 25px;
+        gap: 15px;
+    }
+
+    .topbar-title h1 {
+        font-size: 25px;
+    }
+
+    .topbar-title p {
+        color: var(--gray);
+        margin-top: 4px;
+        font-size: 13px;
+    }
+
+    .user-area {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+    }
+
+    .avatar {
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        background: linear-gradient(135deg, var(--violet), var(--olive));
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-weight: bold;
+    }
+
+    .user-name {
+        font-size: 14px;
+    }
+
+    .menu-toggle {
+        display: none;
+        border: 1px solid var(--border);
+        background: var(--card);
+        color: white;
+        padding: 9px 12px;
+        border-radius: 8px;
+    }
+
+    /* =========================
+       CARDS
+    ========================= */
+
+    .page {
+        max-width: 1200px;
+        margin: auto;
+    }
+
+    .card {
+        background: var(--card);
+        border: 1px solid var(--border);
+        border-radius: 16px;
+        padding: 22px;
+        margin-bottom: 20px;
+    }
+
+    .card-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 18px;
+        gap: 10px;
+    }
+
+    .card-header h2 {
+        font-size: 19px;
+    }
+
+    .card-header p {
+        color: var(--gray);
+        font-size: 13px;
+        margin-top: 4px;
+    }
+
+    /* =========================
+       STUDENT DASHBOARD
+    ========================= */
+
+    .welcome-card {
+        background:
+            linear-gradient(
+                120deg,
+                rgba(128, 87, 199, 0.25),
+                rgba(139, 145, 69, 0.13)
+            ),
+            var(--card);
+        border: 1px solid rgba(128, 87, 199, 0.35);
+        border-radius: 18px;
+        padding: 28px;
+        margin-bottom: 20px;
+    }
+
+    .welcome-card h2 {
+        font-size: 27px;
+        margin-bottom: 8px;
+    }
+
+    .welcome-card p {
+        color: var(--gray);
+    }
+
+    .dashboard-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 15px;
+        margin-bottom: 20px;
+    }
+
+    .stat-card {
+        background: var(--card);
+        border: 1px solid var(--border);
+        border-radius: 15px;
+        padding: 20px;
+    }
+
+    .stat-icon {
+        width: 40px;
+        height: 40px;
+        border-radius: 10px;
+        background: rgba(128, 87, 199, 0.15);
+        color: var(--violet-light);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-bottom: 14px;
+        font-size: 20px;
+    }
+
+    .stat-card h3 {
+        font-size: 25px;
+        margin-bottom: 4px;
+    }
+
+    .stat-card p {
+        color: var(--gray);
+        font-size: 13px;
+    }
+
+    .dashboard-actions {
+        display: flex;
+        gap: 10px;
+        flex-wrap: wrap;
+    }
+
+    .action-btn {
+        padding: 12px 18px;
+        border-radius: 10px;
+        border: 1px solid var(--border);
+        background: var(--card2);
+        color: white;
+    }
+
+    .action-btn.primary {
+        background: var(--violet);
+        border-color: var(--violet);
+    }
+
+    .action-btn.olive {
+        background: var(--olive);
+        border-color: var(--olive);
+    }
+
+    /* =========================
+       JOIN QUEUE
+    ========================= */
+
+    .queue-form {
+        max-width: 700px;
+    }
+
+    .queue-number-preview {
+        padding: 20px;
+        background: rgba(139, 145, 69, 0.09);
+        border: 1px solid rgba(139, 145, 69, 0.25);
+        border-radius: 12px;
+        margin-bottom: 20px;
+    }
+
+    .queue-number-preview span {
+        display: block;
+        color: var(--gray);
+        font-size: 13px;
+    }
+
+    .queue-number-preview strong {
+        display: block;
+        font-size: 32px;
+        margin-top: 4px;
+        color: var(--olive-light);
+    }
+
+    /* =========================
+       STATUS
+    ========================= */
+
+    .status-card {
+        text-align: center;
+        padding: 35px;
+    }
+
+    .queue-big-number {
+        width: 125px;
+        height: 125px;
+        border-radius: 50%;
+        margin: 15px auto 25px;
+        background: linear-gradient(135deg, var(--violet), var(--olive));
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 38px;
+        font-weight: bold;
+        box-shadow: 0 15px 35px rgba(128, 87, 199, 0.2);
+    }
+
+    .status-grid {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 12px;
+        margin: 25px auto;
+        max-width: 650px;
+    }
+
+    .status-info {
+        background: var(--card2);
+        border-radius: 12px;
+        padding: 18px;
+    }
+
+    .status-info span {
+        display: block;
+        color: var(--gray);
+        font-size: 12px;
+        margin-bottom: 7px;
+    }
+
+    .status-info strong {
+        font-size: 19px;
+    }
+
+    .no-queue {
+        text-align: center;
+        padding: 50px 20px;
+        color: var(--gray);
+    }
+
+    /* =========================
+       TABLE
+    ========================= */
+
+    .table-container {
+        overflow-x: auto;
+    }
+
+    table {
+        width: 100%;
+        border-collapse: collapse;
+    }
+
+    th,
+    td {
+        padding: 13px;
+        text-align: left;
+        border-bottom: 1px solid var(--border);
+        font-size: 13px;
+        white-space: nowrap;
+    }
+
+    th {
+        color: var(--gray);
+        font-weight: normal;
+    }
+
+    .badge {
+        display: inline-block;
+        padding: 5px 9px;
+        border-radius: 20px;
+        font-size: 11px;
+    }
+
+    .badge.waiting {
+        background: rgba(139, 145, 69, 0.15);
+        color: var(--olive-light);
+    }
+
+    .badge.completed {
+        background: rgba(95, 198, 129, 0.12);
+        color: var(--success);
+    }
+
+    .badge.cancelled {
+        background: rgba(217, 92, 106, 0.12);
+        color: var(--danger);
+    }
+
+    /* =========================
+       ADMIN DASHBOARD
+    ========================= */
+
+    .admin-header {
+        background:
+            linear-gradient(
+                120deg,
+                rgba(139, 145, 69, 0.18),
+                rgba(128, 87, 199, 0.18)
+            );
+        border: 1px solid rgba(139, 145, 69, 0.25);
+        border-radius: 17px;
+        padding: 25px;
+        margin-bottom: 20px;
+    }
+
+    .admin-header h2 {
+        font-size: 26px;
+        margin-bottom: 7px;
+    }
+
+    .admin-header p {
+        color: var(--gray);
+    }
+
+    .admin-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 15px;
+        margin-bottom: 20px;
+    }
+
+    .admin-stat {
+        background: var(--card);
+        border: 1px solid var(--border);
+        padding: 20px;
+        border-radius: 14px;
+    }
+
+    .admin-stat span {
+        display: block;
+        color: var(--gray);
+        font-size: 13px;
+        margin-bottom: 7px;
+    }
+
+    .admin-stat strong {
+        font-size: 28px;
+    }
+
+    .admin-controls {
+        display: flex;
+        gap: 10px;
+        flex-wrap: wrap;
+        margin-top: 20px;
+    }
+
+    .admin-btn {
+        padding: 11px 17px;
+        border: none;
+        border-radius: 9px;
+        color: white;
+        background: var(--violet);
+    }
+
+    .admin-btn.olive {
+        background: var(--olive);
+    }
+
+    .admin-btn.danger {
+        background: var(--danger);
+    }
+
+    /* =========================
+       PROFILE
+    ========================= */
+
+    .profile-form {
+        max-width: 700px;
+    }
+
+    .profile-id {
+        background: var(--card2);
+        padding: 13px;
+        border-radius: 9px;
+        color: var(--gray);
+        font-size: 14px;
+    }
+
+    /* =========================
+       NOTIFICATION
+    ========================= */
+
+    .notification {
+        position: fixed;
+        right: 25px;
+        bottom: 25px;
+        background: var(--card);
+        border: 1px solid var(--border);
+        color: white;
+        padding: 14px 18px;
+        border-radius: 10px;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+        z-index: 1000;
+        max-width: 330px;
+    }
+
+    /* =========================
+       RESPONSIVE
+    ========================= */
+
+    @media (max-width: 900px) {
+        .dashboard-grid,
+        .admin-grid {
+            grid-template-columns: 1fr;
+        }
+
+        .sidebar {
+            transform: translateX(-100%);
+        }
+
+        .sidebar.open {
+            transform: translateX(0);
+        }
+
+        .main-content {
+            margin-left: 0;
+            width: 100%;
+        }
+
+        .menu-toggle {
+            display: block;
+        }
+    }
+
+    @media (max-width: 600px) {
+        .main-content {
+            padding: 16px;
+        }
+
+        .auth-card {
+            padding: 22px;
+        }
+
+        .status-grid {
+            grid-template-columns: 1fr;
+        }
+
+        .topbar-title h1 {
+            font-size: 21px;
+        }
+
+        .user-name {
+            display: none;
+        }
+
+        .account-types {
+            grid-template-columns: 1fr;
+        }
+    }
+</style>
+</head>
+
+<body>
+
+<!-- =========================================================
+     LOGIN PAGE
+========================================================= -->
+
+<section id="loginPage" class="auth-page">
+    <div class="auth-container">
+
+        <div class="brand">
+            <div class="brand-icon">Q</div>
+            <h1>QueueLess</h1>
+            <p>Smart Queue Management System</p>
+        </div>
+
+        <div class="auth-card">
+            <h2>Welcome Back</h2>
+            <p class="subtitle">Login to continue to QueueLess.</p>
+
+            <form id="loginForm">
+
+                <div class="form-group">
+                    <label>Username or Email</label>
+                    <input
+                        type="text"
+                        id="loginUsername"
+                        class="input"
+                        placeholder="Enter username or email"
+                        required
+                    >
+                </div>
+
+                <div class="form-group">
+                    <label>Password</label>
+                    <input
+                        type="password"
+                        id="loginPassword"
+                        class="input"
+                        placeholder="Enter password"
+                        required
+                    >
+
+                    <span
+                        class="forgot-link"
+                        onclick="showAuthPage('forgot')"
+                    >
+                        Forgot Password?
+                    </span>
+                </div>
+
+                <button class="primary-btn" type="submit">
+                    Login
+                </button>
+            </form>
+
+            <div class="auth-links">
+                Don't have an account?
+                <a onclick="showAuthPage('register')">Register</a>
+            </div>
+        </div>
+
+    </div>
+</section>
+
+
+<!-- =========================================================
+     REGISTER PAGE
+========================================================= -->
+
+<section id="registerPage" class="auth-page hidden">
+    <div class="auth-container">
+
+        <div class="brand">
+            <div class="brand-icon">Q</div>
+            <h1>QueueLess</h1>
+            <p>Create your account</p>
+        </div>
+
+        <div class="auth-card">
+
+            <h2>Create Account</h2>
+            <p class="subtitle">
+                Choose the account type you want to register.
+            </p>
+
+            <form id="registerForm">
+
+                <div class="form-group">
+                    <label>Account Type</label>
+
+                    <div class="account-types">
+
+                        <label class="account-option">
+                            <input
+                                type="radio"
+                                name="accountType"
+                                value="student"
+                                checked
+                                onchange="toggleAccountFields()"
+                            >
+                            Student
+                        </label>
+
+                        <label class="account-option">
+                            <input
+                                type="radio"
+                                name="accountType"
+                                value="admin"
+                                onchange="toggleAccountFields()"
+                            >
+                            Admin
+                        </label>
+
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label>Full Name</label>
+                    <input
+                        type="text"
+                        id="registerName"
+                        class="input"
+                        placeholder="Enter full name"
+                        required
+                    >
+                </div>
+
+                <div class="form-group">
+                    <label>Email</label>
+                    <input
+                        type="email"
+                        id="registerEmail"
+                        class="input"
+                        placeholder="Enter email"
+                        required
+                    >
+                </div>
+
+                <div class="form-group">
+                    <label>Username</label>
+                    <input
+                        type="text"
+                        id="registerUsername"
+                        class="input"
+                        placeholder="Create username"
+                        required
+                    >
+                </div>
+
+                <!-- STUDENT ID -->
+                <div class="form-group" id="studentIdGroup">
+                    <label>Student ID</label>
+                    <input
+                        type="text"
+                        id="studentId"
+                        class="input"
+                        placeholder="Example: 2026-0001"
+                    >
+                </div>
+
+                <!-- ADMIN ID -->
+                <div class="form-group hidden" id="adminIdGroup">
+                    <label>Admin ID</label>
+                    <input
+                        type="text"
+                        id="adminId"
+                        class="input"
+                        placeholder="Enter admin ID"
+                    >
+                </div>
+
+                <div class="form-group">
+                    <label>Password</label>
+                    <input
+                        type="password"
+                        id="registerPassword"
+                        class="input"
+                        placeholder="Create password"
+                        required
+                    >
+                </div>
+
+                <div class="form-group">
+                    <label>Confirm Password</label>
+                    <input
+                        type="password"
+                        id="confirmPassword"
+                        class="input"
+                        placeholder="Confirm password"
+                        required
+                    >
+                </div>
+
+                <button class="primary-btn" type="submit">
+                    Register
+                </button>
+
+            </form>
+
+            <div class="auth-links">
+                Already have an account?
+                <a onclick="showAuthPage('login')">Login</a>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+
+<!-- =========================================================
+     FORGOT PASSWORD
+========================================================= -->
+
+<section id="forgotPage" class="auth-page hidden">
+    <div class="auth-container">
+
+        <div class="brand">
+            <div class="brand-icon">Q</div>
+            <h1>QueueLess</h1>
+            <p>Password Recovery</p>
+        </div>
+
+        <div class="auth-card">
+
+            <h2>Forgot Password?</h2>
+            <p class="subtitle">
+                Enter your email address to reset your password.
+            </p>
+
+            <form id="forgotForm">
+
+                <div class="form-group">
+                    <label>Email Address</label>
+                    <input
+                        type="email"
+                        id="forgotEmail"
+                        class="input"
+                        placeholder="Enter your email"
+                        required
+                    >
+                </div>
+
+                <button class="primary-btn" type="submit">
+                    Reset Password
+                </button>
+
+            </form>
+
+            <div class="auth-links">
+                Remember your password?
+                <a onclick="showAuthPage('login')">Back to Login</a>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+
+<!-- =========================================================
+     MAIN APP
+========================================================= -->
+
+<section id="app" class="app hidden">
+
+    <!-- SIDEBAR -->
+    <aside id="sidebar" class="sidebar">
+
+        <div class="sidebar-brand">
+            <div class="sidebar-logo">Q</div>
+
+            <div>
+                <h2>QueueLess</h2>
+                <span>Queue Management</span>
+            </div>
+        </div>
+
+        <nav class="nav">
+
+            <!-- ADMIN NAVIGATION -->
+            <button
+                id="adminDashboardNav"
+                class="nav-item hidden"
+                onclick="showAdminDashboard()"
+            >
+                ⚙ &nbsp; Admin Dashboard
+            </button>
+
+            <!-- STUDENT NAVIGATION -->
+            <div id="studentNav">
+
+                <button
+                    id="studentDashboardNav"
+                    class="nav-item"
+                    onclick="showPage('dashboard', this)"
+                >
+                    ⌂ &nbsp; Student Dashboard
+                </button>
+
+                <button
+                    id="studentJoinNav"
+                    class="nav-item"
+                    onclick="showPage('join', this)"
+                >
+                    ＋ &nbsp; Join Queue
+                </button>
+
+                <button
+                    id="studentStatusNav"
+                    class="nav-item"
+                    onclick="showPage('status', this)"
+                >
+                    ◉ &nbsp; Queue Status
+                </button>
+
+                <button
+                    id="studentHistoryNav"
+                    class="nav-item"
+                    onclick="showPage('history', this)"
+                >
+                    ▤ &nbsp; Queue History
+                </button>
+
+                <button
+                    id="studentProfileNav"
+                    class="nav-item"
+                    onclick="showPage('profile', this)"
+                >
+                    ◯ &nbsp; Profile
+                </button>
+
+            </div>
+
+            <!-- LOGOUT -->
+            <button
+                class="nav-item logout-btn"
+                onclick="logout()"
+            >
+                ⇥ &nbsp; Logout
+            </button>
+
+        </nav>
+
+    </aside>
+
+
+    <!-- MAIN CONTENT -->
+    <main class="main-content">
+
+        <div class="topbar">
+
+            <div style="display:flex;align-items:center;gap:12px;">
+
+                <button
+                    class="menu-toggle"
+                    onclick="toggleSidebar()"
+                >
+                    ☰
+                </button>
+
+                <div class="topbar-title">
+                    <h1 id="pageTitle">Student Dashboard</h1>
+                    <p id="pageSubtitle">
+                        Manage your queue easily.
+                    </p>
+                </div>
+
+            </div>
+
+            <div class="user-area">
+
+                <div class="avatar" id="userAvatar">
+                    U
+                </div>
+
+                <div class="user-name" id="userDisplay">
+                    User
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- =====================================================
+             STUDENT DASHBOARD
+        ====================================================== -->
+
+        <section id="dashboardPage" class="page">
+
+            <div class="welcome-card">
+
+                <h2>
+                    Welcome, <span id="dashboardWelcome">Student</span>!
+                </h2>
+
+                <p>
+                    Manage your queue and check your current status
+                    without waiting in line.
+                </p>
+
+            </div>
+
+
+            <div class="dashboard-grid">
+
+                <div class="stat-card">
+
+                    <div class="stat-icon">
+                        #
+                    </div>
+
+                    <h3 id="dashboardQueueNumber">
+                        --
+                    </h3>
+
+                    <p>
+                        Your Queue Number
+                    </p>
+
+                </div>
+
+
+                <div class="stat-card">
+
+                    <div class="stat-icon">
+                        👥
+                    </div>
+
+                    <h3 id="dashboardPeopleAhead">
+                        0
+                    </h3>
+
+                    <p>
+                        People Ahead
+                    </p>
+
+                </div>
+
+
+                <div class="stat-card">
+
+                    <div class="stat-icon">
+                        ⏱
+                    </div>
+
+                    <h3 id="dashboardWait">
+                        0 min
+                    </h3>
+
+                    <p>
+                        Estimated Wait
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div class="card">
+
+                <div class="card-header">
+
+                    <div>
+                        <h2>Quick Actions</h2>
+                        <p>
+                            Access the most important queue features.
+                        </p>
+                    </div>
+
+                </div>
+
+                <div class="dashboard-actions">
+
+                    <button
+                        class="action-btn primary"
+                        onclick="showPage('join', document.getElementById('studentJoinNav'))"
+                    >
+                        ＋ Join Queue
+                    </button>
+
+                    <button
+                        class="action-btn"
+                        onclick="showPage('status', document.getElementById('studentStatusNav'))"
+                    >
+                        ◉ Check Queue Status
+                    </button>
+
+                    <button
+                        class="action-btn olive"
+                        onclick="showPage('history', document.getElementById('studentHistoryNav'))"
+                    >
+                        ▤ View History
+                    </button>
+
+                </div>
+
+            </div>
+
+
+            <div class="card">
+
+                <div class="card-header">
+
+                    <div>
+                        <h2>Current Queue</h2>
+                        <p>
+                            Your current queue information.
+                        </p>
+                    </div>
+
+                </div>
+
+                <div id="dashboardQueueInfo">
+
+                    <div class="no-queue">
+                        <p>
+                            You are not currently in a queue.
+                        </p>
+
+                        <br>
+
+                        <button
+                            class="primary-btn"
+                            style="max-width:250px;"
+                            onclick="showPage('join', document.getElementById('studentJoinNav'))"
+                        >
+                            Join a Queue
+                        </button>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- =====================================================
+             JOIN QUEUE
+        ====================================================== -->
+
+        <section id="joinPage" class="page hidden">
+
+            <div class="card">
+
+                <div class="card-header">
+
+                    <div>
+                        <h2>Join Queue</h2>
+                        <p>
+                            Select a service and tell us your purpose.
+                        </p>
+                    </div>
+
+                </div>
+
+                <div class="queue-form">
+
+                    <div class="queue-number-preview">
+
+                        <span>
+                            Next available queue number
+                        </span>
+
+                        <strong id="nextQueueNumber">
+                            Q-001
+                        </strong>
+
+                    </div>
+
+
+                    <form id="queueForm">
+
+                        <div class="form-group">
+
+                            <label>
+                                Service
+                            </label>
+
+                            <select
+                                id="service"
+                                required
+                            >
+
+                                <option value="">
+                                    Select a service
+                                </option>
+
+                                <option value="Registrar">
+                                    Registrar
+                                </option>
+
+                                <option value="Cashier">
+                                    Cashier
+                                </option>
+
+                                <option value="Library">
+                                    Library
+                                </option>
+
+                                <option value="Student Affairs">
+                                    Student Affairs
+                                </option>
+
+                                <option value="IT Support">
+                                    IT Support
+                                </option>
+
+                            </select>
+
+                        </div>
+
+
+                        <div class="form-group">
+
+                            <label>
+                                Purpose / Reason
+                            </label>
+
+                            <textarea
+                                id="purpose"
+                                placeholder="Enter the reason for your visit..."
+                                required
+                            ></textarea>
+
+                        </div>
+
+
+                        <button
+                            type="submit"
+                            class="primary-btn"
+                        >
+                            Join Queue
+                        </button>
+
+                    </form>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- =====================================================
+             QUEUE STATUS
+        ====================================================== -->
+
+        <section id="statusPage" class="page hidden">
+
+            <div class="card">
+
+                <div id="activeStatus" class="status-card">
+
+                    <h2>Your Queue Status</h2>
+
+                    <p style="color:var(--gray);margin-top:5px;">
+                        Please wait for your number to be called.
+                    </p>
+
+                    <div
+                        class="queue-big-number"
+                        id="statusQueueNumber"
+                    >
+                        --
+                    </div>
+
+
+                    <div class="status-grid">
+
+                        <div class="status-info">
+
+                            <span>
+                                People Ahead
+                            </span>
+
+                            <strong id="peopleAhead">
+                                0
+                            </strong>
+
+                        </div>
+
+
+                        <div class="status-info">
+
+                            <span>
+                                Estimated Wait
+                            </span>
+
+                            <strong id="estimatedWait">
+                                0 min
+                            </strong>
+
+                        </div>
+
+                    </div>
+
+
+                    <button
+                        class="admin-btn danger"
+                        onclick="leaveQueue()"
+                    >
+                        Leave Queue
+                    </button>
+
+                </div>
+
+
+                <div
+                    id="noQueueStatus"
+                    class="no-queue hidden"
+                >
+
+                    <h2 style="color:white;">
+                        No Active Queue
+                    </h2>
+
+                    <p style="margin-top:8px;">
+                        You are not currently waiting in a queue.
+                    </p>
+
+                    <br>
+
+                    <button
+                        class="primary-btn"
+                        style="max-width:250px;"
+                        onclick="showPage('join', document.getElementById('studentJoinNav'))"
+                    >
+                        Join Queue
+                    </button>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- =====================================================
+             QUEUE HISTORY
+        ====================================================== -->
+
+        <section id="historyPage" class="page hidden">
+
+            <div class="card">
+
+                <div class="card-header">
+
+                    <div>
+                        <h2>Queue History</h2>
+                        <p>
+                            View your previous queue transactions.
+                        </p>
+                    </div>
+
+                </div>
+
+
+                <div class="table-container">
+
+                    <table>
+
+                        <thead>
+
+                            <tr>
+                                <th>Queue No.</th>
+                                <th>Service</th>
+                                <th>Purpose</th>
+                                <th>Date</th>
+                                <th>Status</th>
+                            </tr>
+
+                        </thead>
+
+                        <tbody id="historyTableBody">
+
+                        </tbody>
+
+                    </table>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- =====================================================
+             PROFILE
+        ====================================================== -->
+
+        <section id="profilePage" class="page hidden">
+
+            <div class="card">
+
+                <div class="card-header">
+
+                    <div>
+                        <h2>My Profile</h2>
+                        <p>
+                            View and update your account information.
+                        </p>
+                    </div>
+
+                </div>
+
+
+                <form
+                    id="profileForm"
+                    class="profile-form"
+                >
+
+                    <div class="form-group">
+
+                        <label>
+                            Full Name
+                        </label>
+
+                        <input
+                            type="text"
+                            id="profileName"
+                            class="input"
+                            required
+                        >
+
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label>
+                            Email
+                        </label>
+
+                        <input
+                            type="email"
+                            id="profileEmail"
+                            class="input"
+                            required
+                        >
+
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label>
+                            Username
+                        </label>
+
+                        <input
+                            type="text"
+                            id="profileUsername"
+                            class="input"
+                            required
+                        >
+
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label>
+                            Account Type
+                        </label>
+
+                        <div
+                            class="profile-id"
+                            id="profileAccountType"
+                        >
+                            Student
+                        </div>
+
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label>
+                            Student ID
+                        </label>
+
+                        <div
+                            class="profile-id"
+                            id="profileId"
+                        >
+                            --
+                        </div>
+
+                    </div>
+
+
+                    <button
+                        type="submit"
+                        class="primary-btn"
+                    >
+                        Save Changes
+                    </button>
+
+                </form>
+
+            </div>
+
+        </section>
+
+
+        <!-- =====================================================
+             ADMIN DASHBOARD
+        ====================================================== -->
+
+        <section id="adminPage" class="page hidden">
+
+            <div class="admin-header">
+
+                <h2>
+                    Admin Dashboard
+                </h2>
+
+                <p>
+                    Manage and monitor the QueueLess system.
+                </p>
+
+            </div>
+
+
+            <div class="admin-grid">
+
+                <div class="admin-stat">
+
+                    <span>
+                        Current Queue
+                    </span>
+
+                    <strong id="adminCurrentQueue">
+                        --
+                    </strong>
+
+                </div>
+
+
+                <div class="admin-stat">
+
+                    <span>
+                        People Waiting
+                    </span>
+
+                    <strong id="adminPeopleWaiting">
+                        0
+                    </strong>
+
+                </div>
+
+
+                <div class="admin-stat">
+
+                    <span>
+                        Estimated Wait
+                    </span>
+
+                    <strong id="adminEstimatedWait">
+                        0 min
+                    </strong>
+
+                </div>
+
+            </div>
+
+
+            <div class="card">
+
+                <div class="card-header">
+
+                    <div>
+                        <h2>Queue Control</h2>
+                        <p>
+                            Manage the current queue.
+                        </p>
+                    </div>
+
+                </div>
+
+
+                <div class="admin-controls">
+
+                    <button
+                        class="admin-btn"
+                        onclick="adminNextQueue()"
+                    >
+                        ▶ Call Next
+                    </button>
+
+                    <button
+                        class="admin-btn olive"
+                        onclick="adminCompleteQueue()"
+                    >
+                        ✓ Complete Current
+                    </button>
+
+                    <button
+                        class="admin-btn danger"
+                        onclick="adminClearQueue()"
+                    >
+                        ✕ Clear Queue
+                    </button>
+
+                </div>
+
+            </div>
+
+
+            <div class="card">
+
+                <div class="card-header">
+
+                    <div>
+                        <h2>Current Queue Information</h2>
+                        <p>
+                            Information about the active queue.
+                        </p>
+                    </div>
+
+                </div>
+
+
+                <div class="table-container">
+
+                    <table>
+
+                        <thead>
+
+                            <tr>
+                                <th>Queue Number</th>
+                                <th>Service</th>
+                                <th>Purpose</th>
+                                <th>People Ahead</th>
+                                <th>Estimated Wait</th>
+                                <th>Status</th>
+                            </tr>
+
+                        </thead>
+
+                        <tbody id="adminQueueTable">
+
+                        </tbody>
+
+                    </table>
+
+                </div>
+
+            </div>
+
+        </section>
+
+    </main>
+
+</section>
+
+
+<!-- NOTIFICATION -->
+<div
+    id="notification"
+    class="notification hidden"
+></div>
+
+
+<script>
+
+/* =========================================================
+   STORAGE / VARIABLES
+========================================================= */
+
+let currentUser = null;
+let queueData = null;
+
+let historyData = [];
+
+let queueCounter = 1;
+
+let queueTimer = null;
+
+
+/* =========================================================
+   DEMO ACCOUNT
+========================================================= */
+
+const demoAccount = {
+    name: "Shan",
+    email: "shan@example.com",
+    username: "shan",
+    password: "123456",
+    accountType: "student",
+    studentId: "2026-0001",
+    adminId: ""
+};
+
+
+/* =========================================================
+   LOAD SAVED DATA
+========================================================= */
+
+function loadStoredData() {
+
+    const savedAccount =
+        localStorage.getItem("queueLessAccount");
+
+    const savedHistory =
+        localStorage.getItem("queueLessHistory");
+
+    const savedCounter =
+        localStorage.getItem("queueLessCounter");
+
+    const savedQueue =
+        localStorage.getItem("queueLessQueue");
+
+
+    if (!savedAccount) {
+
+        localStorage.setItem(
+            "queueLessAccount",
+            JSON.stringify(demoAccount)
+        );
+
+    }
+
+
+    if (savedHistory) {
+
+        historyData =
+            JSON.parse(savedHistory);
+
+    }
+
+
+    if (savedCounter) {
+
+        queueCounter =
+            parseInt(savedCounter);
+
+    }
+
+
+    if (savedQueue) {
+
+        queueData =
+            JSON.parse(savedQueue);
+
+    }
+
+}
+
+
+/* =========================================================
+   AUTH PAGE CONTROL
+========================================================= */
+
+function showAuthPage(page) {
+
+    document
+        .getElementById("loginPage")
+        .classList.add("hidden");
+
+    document
+        .getElementById("registerPage")
+        .classList.add("hidden");
+
+    document
+        .getElementById("forgotPage")
+        .classList.add("hidden");
+
+
+    if (page === "login") {
+
+        document
+            .getElementById("loginPage")
+            .classList.remove("hidden");
+
+    }
+
+    else if (page === "register") {
+
+        document
+            .getElementById("registerPage")
+            .classList.remove("hidden");
+
+        toggleAccountFields();
+
+    }
+
+    else if (page === "forgot") {
+
+        document
+            .getElementById("forgotPage")
+            .classList.remove("hidden");
+
+    }
+
+}
+
+
+/* =========================================================
+   ACCOUNT TYPE FIELDS
+========================================================= */
+
+function toggleAccountFields() {
+
+    const accountType =
+        document.querySelector(
+            'input[name="accountType"]:checked'
+        ).value;
+
+
+    const studentGroup =
+        document.getElementById("studentIdGroup");
+
+    const adminGroup =
+        document.getElementById("adminIdGroup");
+
+    const studentId =
+        document.getElementById("studentId");
+
+    const adminId =
+        document.getElementById("adminId");
+
+
+    if (accountType === "student") {
+
+        studentGroup.classList.remove("hidden");
+        adminGroup.classList.add("hidden");
+
+        studentId.required = true;
+        adminId.required = false;
+
+        adminId.value = "";
+
+    }
+
+    else {
+
+        studentGroup.classList.add("hidden");
+        adminGroup.classList.remove("hidden");
+
+        studentId.required = false;
+        adminId.required = true;
+
+        studentId.value = "";
+
+    }
+
+}
+
+
+/* =========================================================
+   REGISTER
+========================================================= */
+
+document
+    .getElementById("registerForm")
+    .addEventListener("submit", function(event) {
+
+        event.preventDefault();
+
+
+        const name =
+            document.getElementById("registerName")
+                .value.trim();
+
+        const email =
+            document.getElementById("registerEmail")
+                .value.trim();
+
+        const username =
+            document.getElementById("registerUsername")
+                .value.trim();
+
+        const password =
+            document.getElementById("registerPassword")
+                .value;
+
+        const confirmPassword =
+            document.getElementById("confirmPassword")
+                .value;
+
+        const accountType =
+            document.querySelector(
+                'input[name="accountType"]:checked'
+            ).value;
+
+        const studentId =
+            document.getElementById("studentId")
+                .value.trim();
+
+        const adminId =
+            document.getElementById("adminId")
+                .value.trim();
+
+
+        if (password !== confirmPassword) {
+
+            notify("Passwords do not match.");
+
+            return;
+
+        }
+
+
+        if (accountType === "student" && !studentId) {
+
+            notify("Please enter your Student ID.");
+
+            return;
+
+        }
+
+
+        if (accountType === "admin" && !adminId) {
+
+            notify("Please enter your Admin ID.");
+
+            return;
+
+        }
+
+
+        const account = {
+
+            name: name,
+
+            email: email,
+
+            username: username,
+
+            password: password,
+
+            accountType: accountType,
+
+            studentId:
+                accountType === "student"
+                    ? studentId
+                    : "",
+
+            adminId:
+                accountType === "admin"
+                    ? adminId
+                    : ""
+
+        };
+
+
+        localStorage.setItem(
+            "queueLessAccount",
+            JSON.stringify(account)
+        );
+
+
+        notify(
+            "Registration successful. You can now login."
+        );
+
+
+        this.reset();
+
+        document
+            .querySelector(
+                'input[name="accountType"][value="student"]'
+            )
+            .checked = true;
+
+        toggleAccountFields();
+
+        setTimeout(function() {
+
+            showAuthPage("login");
+
+        }, 900);
+
+    });
+
+
+/* =========================================================
+   LOGIN
+========================================================= */
+
+document
+    .getElementById("loginForm")
+    .addEventListener("submit", function(event) {
+
+        event.preventDefault();
+
+
+        const loginValue =
+            document.getElementById("loginUsername")
+                .value.trim();
+
+        const password =
+            document.getElementById("loginPassword")
+                .value;
+
+
+        const account =
+            JSON.parse(
+                localStorage.getItem(
+                    "queueLessAccount"
+                )
+            );
+
+
+        if (!account) {
+
+            notify("No account found.");
+
+            return;
+
+        }
+
+
+        const validLogin =
+            (
+                account.username === loginValue ||
+                account.email === loginValue
+            )
+            &&
+            account.password === password;
+
+
+        if (!validLogin) {
+
+            notify(
+                "Invalid username/email or password."
+            );
+
+            return;
+
+        }
+
+
+        currentUser = account;
+
+
+        localStorage.setItem(
+            "queueLessCurrentUser",
+            JSON.stringify(currentUser)
+        );
+
+
+        document
+            .getElementById("loginForm")
+            .reset();
+
+
+        document
+            .getElementById("loginPage")
+            .classList.add("hidden");
+
+
+        document
+            .getElementById("app")
+            .classList.remove("hidden");
+
+
+        updateUserInterface();
+
+
+        if (currentUser.accountType === "admin") {
+
+            showAdminDashboard();
+
+            notify(
+                "Welcome, Admin " + currentUser.name + "!"
+            );
+
+        }
+
+        else {
+
+            showPage(
+                "dashboard",
+                document.getElementById(
+                    "studentDashboardNav"
+                )
+            );
+
+            notify(
+                "Welcome back, " +
+                currentUser.name +
+                "!"
+            );
+
+        }
+
+    });
+
+
+/* =========================================================
+   FORGOT PASSWORD
+========================================================= */
+
+document
+    .getElementById("forgotForm")
+    .addEventListener("submit", function(event) {
+
+        event.preventDefault();
+
+
+        const email =
+            document.getElementById("forgotEmail")
+                .value.trim();
+
+
+        const account =
+            JSON.parse(
+                localStorage.getItem(
+                    "queueLessAccount"
+                )
+            );
+
+
+        if (
+            account &&
+            account.email.toLowerCase() ===
+            email.toLowerCase()
+        ) {
+
+            notify(
+                "Password reset request accepted. For this demo, your password is: " +
+                account.password
+            );
+
+        }
+
+        else {
+
+            notify(
+                "No account found with that email."
+            );
+
+        }
+
+    });
+
+
+/* =========================================================
+   UPDATE USER INTERFACE
+========================================================= */
+
+function updateUserInterface() {
+
+    if (!currentUser) return;
+
+
+    const initial =
+        currentUser.name
+            .charAt(0)
+            .toUpperCase();
+
+
+    const avatar =
+        document.getElementById("userAvatar");
+
+    const userDisplay =
+        document.getElementById("userDisplay");
+
+
+    if (avatar) {
+
+        avatar.innerText = initial;
+
+    }
+
+
+    if (userDisplay) {
+
+        userDisplay.innerText =
+            currentUser.name;
+
+    }
+
+
+    const profileName =
+        document.getElementById("profileName");
+
+    const profileEmail =
+        document.getElementById("profileEmail");
+
+    const profileUsername =
+        document.getElementById("profileUsername");
+
+    const profileAccountType =
+        document.getElementById(
+            "profileAccountType"
+        );
+
+    const profileId =
+        document.getElementById("profileId");
+
+
+    if (profileName) {
+
+        profileName.value =
+            currentUser.name;
+
+    }
+
+
+    if (profileEmail) {
+
+        profileEmail.value =
+            currentUser.email;
+
+    }
+
+
+    if (profileUsername) {
+
+        profileUsername.value =
+            currentUser.username;
+
+    }
+
+
+    if (profileAccountType) {
+
+        profileAccountType.innerText =
+            currentUser.accountType === "admin"
+                ? "Admin"
+                : "Student";
+
+    }
+
+
+    if (profileId) {
+
+        profileId.innerText =
+            currentUser.accountType === "admin"
+                ? currentUser.adminId
+                : currentUser.studentId;
+
+    }
+
+
+    updateRoleUI();
+    updateQueueInterface();
+
+}
+
+
+/* =========================================================
+   ROLE-BASED UI
+========================================================= */
+
+function updateRoleUI() {
+
+    if (!currentUser) return;
+
+
+    const isAdmin =
+        currentUser.accountType === "admin";
+
+
+    const adminNav =
+        document.getElementById(
+            "adminDashboardNav"
+        );
+
+    const studentNav =
+        document.getElementById(
+            "studentNav"
+        );
+
+
+    if (adminNav) {
+
+        adminNav.classList.toggle(
+            "hidden",
+            !isAdmin
+        );
+
+    }
+
+
+    if (studentNav) {
+
+        studentNav.classList.toggle(
+            "hidden",
+            isAdmin
+        );
+
+    }
+
+}
+
+
+/* =========================================================
+   PAGE CONTROL
+========================================================= */
+
+function showPage(page, button) {
+
+    if (!currentUser) return;
+
+
+    const isAdmin =
+        currentUser.accountType === "admin";
+
+
+    /*
+       ADMIN USERS CAN ONLY ACCESS
+       ADMIN DASHBOARD.
+    */
+
+    if (isAdmin) {
+
+        if (page !== "admin") {
+
+            notify(
+                "Admin users can only access the Admin Dashboard."
+            );
+
+            return;
+
+        }
+
+    }
+
+
+    /*
+       STUDENTS CAN ONLY ACCESS
+       STUDENT PAGES.
+    */
+
+    const studentPages = [
+        "dashboard",
+        "join",
+        "status",
+        "history",
+        "profile"
+    ];
+
+
+    if (
+        !isAdmin &&
+        !studentPages.includes(page)
+    ) {
+
+        notify(
+            "This page is not available."
+        );
+
+        return;
+
+    }
+
+
+    const pages = [
+
+        "adminPage",
+        "dashboardPage",
+        "joinPage",
+        "statusPage",
+        "historyPage",
+        "profilePage"
+
+    ];
+
+
+    pages.forEach(function(pageId) {
+
+        const element =
+            document.getElementById(pageId);
+
+        if (element) {
+
+            element.classList.add("hidden");
+
+        }
+
+    });
+
+
+    let targetPage =
+        document.getElementById(
+            page + "Page"
+        );
+
+
+    if (targetPage) {
+
+        targetPage.classList.remove("hidden");
+
+    }
+
+
+    /*
+       Update active navigation item.
+    */
+
+    document
+        .querySelectorAll(".nav-item")
+        .forEach(function(item) {
+
+            item.classList.remove("active");
+
+        });
+
+
+    if (button) {
+
+        button.classList.add("active");
+
+    }
+
+
+    /*
+       Update page title.
+    */
+
+    const pageTitle =
+        document.getElementById(
+            "pageTitle"
+        );
+
+    const pageSubtitle =
+        document.getElementById(
+            "pageSubtitle"
+        );
+
+
+    const titles = {
+
+        dashboard: [
+            "Student Dashboard",
+            "Manage your queue easily."
+        ],
+
+        join: [
+            "Join Queue",
+            "Join a queue without waiting in line."
+        ],
+
+        status: [
+            "Queue Status",
+            "Track your current queue position."
+        ],
+
+        history: [
+            "Queue History",
+            "View your previous queue transactions."
+        ],
+
+        profile: [
+            "My Profile",
+            "Manage your account information."
+        ],
+
+        admin: [
+            "Admin Dashboard",
+            "Monitor and manage the queue system."
+        ]
+
+    };
+
+
+    if (titles[page]) {
+
+        pageTitle.innerText =
+            titles[page][0];
+
+        pageSubtitle.innerText =
+            titles[page][1];
+
+    }
+
+
+    if (page === "history") {
+
+        loadHistory();
+
+    }
+
+
+    if (
+        page === "status" ||
+        page === "dashboard"
+    ) {
+
+        updateQueueInterface();
+
+    }
+
+
+    document
+        .getElementById("sidebar")
+        .classList.remove("open");
+
+}
+
+
+/* =========================================================
+   SHOW PAGE BY ID
+========================================================= */
+
+function showPageById(page) {
+
+    if (!currentUser) return;
+
+
+    if (page === "admin") {
+
+        showAdminDashboard();
+
+        return;
+
+    }
+
+
+    const buttons = {
+
+        dashboard:
+            document.getElementById(
+                "studentDashboardNav"
+            ),
+
+        join:
+            document.getElementById(
+                "studentJoinNav"
+            ),
+
+        status:
+            document.getElementById(
+                "studentStatusNav"
+            ),
+
+        history:
+            document.getElementById(
+                "studentHistoryNav"
+            ),
+
+        profile:
+            document.getElementById(
+                "studentProfileNav"
+            )
+
+    };
+
+
+    showPage(
+        page,
+        buttons[page] || null
+    );
+
+}
+
+
+/* =========================================================
+   ADMIN DASHBOARD
+========================================================= */
+
+function showAdminDashboard() {
+
+    if (!currentUser) return;
+
+
+    if (
+        currentUser.accountType !== "admin"
+    ) {
+
+        notify(
+            "Only admin users can access this page."
+        );
+
+        return;
+
+    }
+
+
+    const pages = [
+
+        "dashboardPage",
+        "joinPage",
+        "statusPage",
+        "historyPage",
+        "profilePage"
+
+    ];
+
+
+    pages.forEach(function(pageId) {
+
+        const element =
+            document.getElementById(pageId);
+
+        if (element) {
+
+            element.classList.add("hidden");
+
+        }
+
+    });
+
+
+    document
+        .getElementById("adminPage")
+        .classList.remove("hidden");
+
+
+    document
+        .querySelectorAll(".nav-item")
+        .forEach(function(item) {
+
+            item.classList.remove("active");
+
+        });
+
+
+    document
+        .getElementById(
+            "adminDashboardNav"
+        )
+        .classList.add("active");
+
+
+    document
+        .getElementById("pageTitle")
+        .innerText =
+        "Admin Dashboard";
+
+
+    document
+        .getElementById("pageSubtitle")
+        .innerText =
+        "Monitor and manage the queue system.";
+
+
+    updateAdminDashboard();
+
+}
+
+
+/* =========================================================
+   JOIN QUEUE
+========================================================= */
+
+document
+    .getElementById("queueForm")
+    .addEventListener("submit", function(event) {
+
+        event.preventDefault();
+
+
+        if (!currentUser) {
+
+            notify(
+                "Please login first."
+            );
+
+            return;
+
+        }
+
+
+        if (
+            currentUser.accountType !== "student"
+        ) {
+
+            notify(
+                "Only students can join a queue."
+            );
+
+            return;
+
+        }
+
+
+        if (queueData) {
+
+            notify(
+                "You already have an active queue."
+            );
+
+            return;
+
+        }
+
+
+        const service =
+            document.getElementById(
+                "service"
+            ).value;
+
+
+        const purpose =
+            document.getElementById(
+                "purpose"
+            ).value.trim();
+
+
+        if (!service || !purpose) {
+
+            notify(
+                "Please complete all fields."
+            );
+
+            return;
+
+        }
+
+
+        const queueNumber =
+            "Q-" +
+            String(queueCounter)
+                .padStart(3, "0");
+
+
+        queueCounter++;
+
+
+        localStorage.setItem(
+            "queueLessCounter",
+            queueCounter
+        );
+
+
+        queueData = {
+
+            queueNumber:
+                queueNumber,
+
+            service:
+                service,
+
+            purpose:
+                purpose,
+
+            peopleAhead:
+                Math.floor(
+                    Math.random() * 5
+                ),
+
+            estimatedMinutes:
+                Math.floor(
+                    Math.random() * 20
+                ) + 5,
+
+            date:
+                new Date().toLocaleString(),
+
+            status:
+                "Waiting"
+
+        };
+
+
+        localStorage.setItem(
+            "queueLessQueue",
+            JSON.stringify(queueData)
+        );
+
+
+        this.reset();
+
+
+        updateQueueInterface();
+
+
+        notify(
+            "You successfully joined the queue."
+        );
+
+
+        setTimeout(function() {
+
+            showPageById("status");
+
+        }, 700);
+
+
+        startQueueSimulation();
+
+    });
+
+
+/* =========================================================
+   UPDATE QUEUE INTERFACE
+========================================================= */
+
+function updateQueueInterface() {
+
+    const activeStatus =
+        document.getElementById(
+            "activeStatus"
+        );
+
+    const noQueueStatus =
+        document.getElementById(
+            "noQueueStatus"
+        );
+
+
+    /*
+       NO ACTIVE QUEUE
+    */
+
+    if (!queueData) {
+
+        document.getElementById(
+            "statusQueueNumber"
+        ).innerText = "--";
+
+
+        document.getElementById(
+            "peopleAhead"
+        ).innerText = "0";
+
+
+        document.getElementById(
+            "estimatedWait"
+        ).innerText = "0 min";
+
+
+        if (activeStatus) {
+
+            activeStatus.classList.add(
+                "hidden"
+            );
+
+        }
+
+
+        if (noQueueStatus) {
+
+            noQueueStatus.classList.remove(
+                "hidden"
+            );
+
+        }
+
+
+        document.getElementById(
+            "dashboardQueueNumber"
+        ).innerText = "--";
+
+
+        document.getElementById(
+            "dashboardPeopleAhead"
+        ).innerText = "0";
+
+
+        document.getElementById(
+            "dashboardWait"
+        ).innerText = "0 min";
+
+
+        document.getElementById(
+            "dashboardQueueInfo"
+        ).innerHTML = `
+
+            <div class="no-queue">
+
+                <p>
+                    You are not currently in a queue.
+                </p>
+
+                <br>
+
+                <button
+                    class="primary-btn"
+                    style="max-width:250px;"
+                    onclick="
+                        showPage(
+                            'join',
+                            document.getElementById('studentJoinNav')
+                        )
+                    "
+                >
+                    Join a Queue
+                </button>
+
+            </div>
+
+        `;
+
+
+        updateAdminDashboard();
+
+        return;
+
+    }
+
+
+    /*
+       ACTIVE QUEUE
+    */
+
+    if (activeStatus) {
+
+        activeStatus.classList.remove(
+            "hidden"
+        );
+
+    }
+
+
+    if (noQueueStatus) {
+
+        noQueueStatus.classList.add(
+            "hidden"
+        );
+
+    }
+
+
+    document.getElementById(
+        "statusQueueNumber"
+    ).innerText =
+        queueData.queueNumber;
+
+
+    document.getElementById(
+        "peopleAhead"
+    ).innerText =
+        queueData.peopleAhead;
+
+
+    document.getElementById(
+        "estimatedWait"
+    ).innerText =
+        queueData.estimatedMinutes +
+        " min";
+
+
+    /*
+       STUDENT DASHBOARD
+    */
+
+    document.getElementById(
+        "dashboardQueueNumber"
+    ).innerText =
+        queueData.queueNumber;
+
+
+    document.getElementById(
+        "dashboardPeopleAhead"
+    ).innerText =
+        queueData.peopleAhead;
+
+
+    document.getElementById(
+        "dashboardWait"
+    ).innerText =
+        queueData.estimatedMinutes +
+        " min";
+
+
+    document.getElementById(
+        "dashboardQueueInfo"
+    ).innerHTML = `
+
+        <div
+            style="
+                display:grid;
+                grid-template-columns:
+                repeat(3,1fr);
+                gap:12px;
+            "
+        >
+
+            <div class="status-info">
+                <span>Queue Number</span>
+                <strong>
+                    ${queueData.queueNumber}
+                </strong>
+            </div>
+
+            <div class="status-info">
+                <span>Service</span>
+                <strong>
+                    ${queueData.service}
+                </strong>
+            </div>
+
+            <div class="status-info">
+                <span>Status</span>
+                <strong>
+                    ${queueData.status}
+                </strong>
+            </div>
+
+        </div>
+
+    `;
+
+
+    updateAdminDashboard();
+
+}
+
+
+/* =========================================================
+   QUEUE SIMULATION
+========================================================= */
+
+function startQueueSimulation() {
+
+    if (queueTimer) {
+
+        clearInterval(queueTimer);
+
+    }
+
+
+    queueTimer =
+        setInterval(function() {
+
+            if (!queueData) {
+
+                clearInterval(
+                    queueTimer
+                );
+
+                return;
+
+            }
+
+
+            if (
+                queueData.peopleAhead > 0
+            ) {
+
+                queueData.peopleAhead--;
+
+
+                queueData.estimatedMinutes =
+                    Math.max(
+                        0,
+                        queueData.peopleAhead * 5
+                    );
+
+
+                localStorage.setItem(
+                    "queueLessQueue",
+                    JSON.stringify(queueData)
+                );
+
+
+                updateQueueInterface();
+
+            }
+
+        }, 15000);
+
+}
+
+
+/* =========================================================
+   LEAVE QUEUE
+========================================================= */
+
+function leaveQueue() {
+
+    if (!queueData) {
+
+        notify(
+            "You do not have an active queue."
+        );
+
+        return;
+
+    }
+
+
+    const cancelledQueue = {
+
+        queueNumber:
+            queueData.queueNumber,
+
+        service:
+            queueData.service,
+
+        purpose:
+            queueData.purpose,
+
+        date:
+            new Date().toLocaleString(),
+
+        status:
+            "Cancelled"
+
+    };
+
+
+    historyData.unshift(
+        cancelledQueue
+    );
+
+
+    localStorage.setItem(
+        "queueLessHistory",
+        JSON.stringify(historyData)
+    );
+
+
+    queueData = null;
+
+
+    localStorage.removeItem(
+        "queueLessQueue"
+    );
+
+
+    if (queueTimer) {
+
+        clearInterval(queueTimer);
+
+    }
+
+
+    updateQueueInterface();
+    loadHistory();
+
+
+    notify(
+        "You have left the queue."
+    );
+
+
+    setTimeout(function() {
+
+        showPageById("history");
+
+    }, 500);
+
+}
+
+
+/* =========================================================
+   HISTORY
+========================================================= */
+
+function loadHistory() {
+
+    const tbody =
+        document.getElementById(
+            "historyTableBody"
+        );
+
+
+    if (!tbody) return;
+
+
+    if (historyData.length === 0) {
+
+        tbody.innerHTML = `
+
+            <tr>
+
+                <td
+                    colspan="5"
+                    style="
+                        text-align:center;
+                        color:var(--gray);
+                        padding:30px;
+                    "
+                >
+                    No queue history yet.
+                </td>
+
+            </tr>
+
+        `;
+
+        return;
+
+    }
+
+
+    tbody.innerHTML =
+        historyData
+            .map(function(item) {
+
+                let badgeClass =
+                    "waiting";
+
+
+                if (
+                    item.status ===
+                    "Completed"
+                ) {
+
+                    badgeClass =
+                        "completed";
+
+                }
+
+
+                if (
+                    item.status ===
+                    "Cancelled"
+                ) {
+
+                    badgeClass =
+                        "cancelled";
+
+                }
+
+
+                return `
+
+                    <tr>
+
+                        <td>
+                            ${item.queueNumber}
+                        </td>
+
+                        <td>
+                            ${item.service}
+                        </td>
+
+                        <td>
+                            ${item.purpose}
+                        </td>
+
+                        <td>
+                            ${item.date}
+                        </td>
+
+                        <td>
+
+                            <span
+                                class="badge ${badgeClass}"
+                            >
+                                ${item.status}
+                            </span>
+
+                        </td>
+
+                    </tr>
+
+                `;
+
+            })
+            .join("");
+
+}
+
+
+/* =========================================================
+   ADMIN DASHBOARD UPDATE
+========================================================= */
+
+function updateAdminDashboard() {
+
+    const currentQueue =
+        document.getElementById(
+            "adminCurrentQueue"
+        );
+
+    const peopleWaiting =
+        document.getElementById(
+            "adminPeopleWaiting"
+        );
+
+    const estimatedWait =
+        document.getElementById(
+            "adminEstimatedWait"
+        );
+
+    const table =
+        document.getElementById(
+            "adminQueueTable"
+        );
+
+
+    if (!queueData) {
+
+        if (currentQueue) {
+
+            currentQueue.innerText =
+                "--";
+
+        }
+
+
+        if (peopleWaiting) {
+
+            peopleWaiting.innerText =
+                "0";
+
+        }
+
+
+        if (estimatedWait) {
+
+            estimatedWait.innerText =
+                "0 min";
+
+        }
+
+
+        if (table) {
+
+            table.innerHTML = `
+
+                <tr>
+
+                    <td
+                        colspan="6"
+                        style="
+                            text-align:center;
+                            color:var(--gray);
+                            padding:30px;
+                        "
+                    >
+                        No active queue.
+                    </td>
+
+                </tr>
+
+            `;
+
+        }
+
+        return;
+
+    }
+
+
+    if (currentQueue) {
+
+        currentQueue.innerText =
+            queueData.queueNumber;
+
+    }
+
+
+    if (peopleWaiting) {
+
+        peopleWaiting.innerText =
+            queueData.peopleAhead;
+
+    }
+
+
+    if (estimatedWait) {
+
+        estimatedWait.innerText =
+            queueData.estimatedMinutes +
+            " min";
+
+    }
+
+
+    if (table) {
+
+        table.innerHTML = `
+
+            <tr>
+
+                <td>
+                    ${queueData.queueNumber}
+                </td>
+
+                <td>
+                    ${queueData.service}
+                </td>
+
+                <td>
+                    ${queueData.purpose}
+                </td>
+
+                <td>
+                    ${queueData.peopleAhead}
+                </td>
+
+                <td>
+                    ${queueData.estimatedMinutes} min
+                </td>
+
+                <td>
+
+                    <span class="badge waiting">
+                        ${queueData.status}
+                    </span>
+
+                </td>
+
+            </tr>
+
+        `;
+
+    }
+
+}
+
+
+/* =========================================================
+   ADMIN - CALL NEXT
+========================================================= */
+
+function adminNextQueue() {
+
+    if (
+        !currentUser ||
+        currentUser.accountType !== "admin"
+    ) {
+
+        notify(
+            "Only admins can perform this action."
+        );
+
+        return;
+
+    }
+
+
+    if (!queueData) {
+
+        notify(
+            "There is no active queue."
+        );
+
+        return;
+
+    }
+
+
+    if (queueData.peopleAhead > 0) {
+
+        queueData.peopleAhead--;
+
+
+        queueData.estimatedMinutes =
+            Math.max(
+                0,
+                queueData.peopleAhead * 5
+            );
+
+
+        localStorage.setItem(
+            "queueLessQueue",
+            JSON.stringify(queueData)
+        );
+
+
+        updateAdminDashboard();
+        updateQueueInterface();
+
+
+        notify(
+            "Next queue position has been called."
+        );
+
+    }
+
+    else {
+
+        notify(
+            "This is already the current queue."
+        );
+
+    }
+
+}
+
+
+/* =========================================================
+   ADMIN - COMPLETE QUEUE
+========================================================= */
+
+function adminCompleteQueue() {
+
+    if (
+        !currentUser ||
+        currentUser.accountType !== "admin"
+    ) {
+
+        notify(
+            "Only admins can perform this action."
+        );
+
+        return;
+
+    }
+
+
+    if (!queueData) {
+
+        notify(
+            "There is no active queue."
+        );
+
+        return;
+
+    }
+
+
+    const completedQueue = {
+
+        queueNumber:
+            queueData.queueNumber,
+
+        service:
+            queueData.service,
+
+        purpose:
+            queueData.purpose,
+
+        date:
+            new Date().toLocaleString(),
+
+        status:
+            "Completed"
+
+    };
+
+
+    historyData.unshift(
+        completedQueue
+    );
+
+
+    localStorage.setItem(
+        "queueLessHistory",
+        JSON.stringify(historyData)
+    );
+
+
+    queueData = null;
+
+
+    localStorage.removeItem(
+        "queueLessQueue"
+    );
+
+
+    if (queueTimer) {
+
+        clearInterval(queueTimer);
+
+    }
+
+
+    updateAdminDashboard();
+    updateQueueInterface();
+
+
+    notify(
+        "Current queue has been completed."
+    );
+
+}
+
+
+/* =========================================================
+   ADMIN - CLEAR QUEUE
+========================================================= */
+
+function adminClearQueue() {
+
+    if (
+        !currentUser ||
+        currentUser.accountType !== "admin"
+    ) {
+
+        notify(
+            "Only admins can perform this action."
+        );
+
+        return;
+
+    }
+
+
+    if (!queueData) {
+
+        notify(
+            "There is no active queue."
+        );
+
+        return;
+
+    }
+
+
+    const confirmClear =
+        confirm(
+            "Are you sure you want to clear the current queue?"
+        );
+
+
+    if (!confirmClear) return;
+
+
+    queueData = null;
+
+
+    localStorage.removeItem(
+        "queueLessQueue"
+    );
+
+
+    if (queueTimer) {
+
+        clearInterval(queueTimer);
+
+    }
+
+
+    updateAdminDashboard();
+    updateQueueInterface();
+
+
+    notify(
+        "Queue has been cleared."
+    );
+
+}
+
+
+/* =========================================================
+   PROFILE
+========================================================= */
+
+document
+    .getElementById("profileForm")
+    .addEventListener("submit", function(event) {
+
+        event.preventDefault();
+
+
+        if (!currentUser) return;
+
+
+        currentUser.name =
+            document.getElementById(
+                "profileName"
+            ).value.trim();
+
+
+        currentUser.email =
+            document.getElementById(
+                "profileEmail"
+            ).value.trim();
+
+
+        currentUser.username =
+            document.getElementById(
+                "profileUsername"
+            ).value.trim();
+
+
+        localStorage.setItem(
+            "queueLessAccount",
+            JSON.stringify(currentUser)
+        );
+
+
+        localStorage.setItem(
+            "queueLessCurrentUser",
+            JSON.stringify(currentUser)
+        );
+
+
+        updateUserInterface();
+
+
+        notify(
+            "Profile updated successfully."
+        );
+
+    });
+
+
+/* =========================================================
+   LOGOUT
+========================================================= */
+
+function logout() {
+
+    currentUser = null;
+
+
+    localStorage.removeItem(
+        "queueLessCurrentUser"
+    );
+
+
+    document
+        .getElementById("app")
+        .classList.add("hidden");
+
+
+    document
+        .getElementById("loginPage")
+        .classList.remove("hidden");
+
+
+    document
+        .getElementById("loginForm")
+        .reset();
+
+
+    notify(
+        "You have been logged out."
+    );
+
+}
+
+
+/* =========================================================
+   SIDEBAR
+========================================================= */
+
+function toggleSidebar() {
+
+    document
+        .getElementById("sidebar")
+        .classList.toggle("open");
+
+}
+
+
+/* =========================================================
+   NOTIFICATION
+========================================================= */
+
+function notify(message) {
+
+    const notification =
+        document.getElementById(
+            "notification"
+        );
+
+
+    notification.innerText =
+        message;
+
+
+    notification.classList.remove(
+        "hidden"
+    );
+
+
+    setTimeout(function() {
+
+        notification.classList.add(
+            "hidden"
+        );
+
+    }, 3500);
+
+}
+
+
+/* =========================================================
+   AUTO LOGIN
+========================================================= */
+
+function checkAutoLogin() {
+
+    const savedUser =
+        localStorage.getItem(
+            "queueLessCurrentUser"
+        );
+
+
+    if (!savedUser) return;
+
+
+    try {
+
+        currentUser =
+            JSON.parse(savedUser);
+
+
+        document
+            .getElementById("loginPage")
+            .classList.add("hidden");
+
+
+        document
+            .getElementById("registerPage")
+            .classList.add("hidden");
+
+
+        document
+            .getElementById("forgotPage")
+            .classList.add("hidden");
+
+
+        document
+            .getElementById("app")
+            .classList.remove("hidden");
+
+
+        updateUserInterface();
+
+
+        if (
+            currentUser.accountType ===
+            "admin"
+        ) {
+
+            showAdminDashboard();
+
+        }
+
+        else {
+
+            showPage(
+                "dashboard",
+                document.getElementById(
+                    "studentDashboardNav"
+                )
+            );
+
+        }
+
+    }
+
+    catch (error) {
+
+        localStorage.removeItem(
+            "queueLessCurrentUser"
+        );
+
+    }
+
+}
+
+
+/* =========================================================
+   INITIALIZE
+========================================================= */
+
+loadStoredData();
+
+toggleAccountFields();
+
+checkAutoLogin();
+
+</script>
+
+</body>
+</html>
+```
